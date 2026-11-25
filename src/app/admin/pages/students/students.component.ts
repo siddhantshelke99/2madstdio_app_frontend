@@ -10,51 +10,53 @@ import { Course } from '../../../models/course.model';
   standalone: true,
   imports: [CommonModule, FormsModule, MessageModalComponent],
   template: `
-    <div class="p-6 sm:p-8 lg:p-10 space-y-8 max-w-7xl mx-auto">
+    <div class="page-wrap">
       
-      <!-- Page Header & Action Ribbon -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#1e2029]">
+      <!-- Page Header -->
+      <div class="page-top-bar">
         <div>
-          <span class="text-xs font-mono uppercase tracking-[0.2em] text-[#ff4d1c]">
-            Admissions Pipeline
-          </span>
-          <h1 class="font-['Space_Grotesk'] text-3xl font-extrabold text-white mt-1">
-            Student Registrations
-          </h1>
+          <span class="kicker-pill">Admissions Pipeline</span>
+          <h1 class="page-title">Student Registrations</h1>
+          <p class="page-sub">Review candidate applications, manage enrollment status, and dispatch admissions messages.</p>
         </div>
 
-        <div class="flex items-center gap-3">
-          <!-- CSV Export Button -->
+        <div class="top-actions">
           <button
             (click)="exportToCsv()"
             [disabled]="students().length === 0"
-            class="px-4 py-2.5 rounded-lg bg-[#15161c] hover:bg-[#1f2028] border border-[#272935] text-xs font-mono text-[#c5c7d0] hover:text-white transition-colors flex items-center gap-2">
+            class="btn-secondary">
             <svg class="w-4 h-4 text-[#ff4d1c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             <span>Export CSV</span>
           </button>
+          <button
+            (click)="loadStudents()"
+            class="btn-secondary">
+            <svg class="w-4 h-4 text-[#ff4d1c]" [class.animate-spin]="isLoading()" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Refresh</span>
+          </button>
         </div>
       </div>
 
       <!-- Filters & Search Toolbar -->
-      <div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
-        <!-- Search -->
-        <div class="sm:col-span-5 relative">
+      <div class="filter-bar">
+        <div class="search-input-wrap">
           <input
             type="text"
             [(ngModel)]="searchQuery"
             (ngModelChange)="onFilterChange()"
-            placeholder="Search by student name, email, or phone..."
-            class="w-full px-4 py-2.5 rounded-lg bg-[#101115] border border-[#242632] text-sm text-white placeholder-[#585a67] focus:outline-none focus:border-[#ff4d1c] transition-colors" />
+            placeholder="Search by candidate name, email, or phone..."
+            class="filter-input" />
         </div>
 
-        <!-- Status Filter -->
-        <div class="sm:col-span-3">
+        <div class="filter-select-wrap">
           <select
             [(ngModel)]="selectedStatus"
             (ngModelChange)="onFilterChange()"
-            class="w-full px-3.5 py-2.5 rounded-lg bg-[#101115] border border-[#242632] text-xs font-mono text-white focus:outline-none focus:border-[#ff4d1c] transition-colors">
+            class="filter-select">
             <option value="">All Statuses</option>
             <option value="new">New Applications</option>
             <option value="contacted">Contacted</option>
@@ -63,12 +65,11 @@ import { Course } from '../../../models/course.model';
           </select>
         </div>
 
-        <!-- Course Filter -->
-        <div class="sm:col-span-4">
+        <div class="filter-select-wrap">
           <select
             [(ngModel)]="selectedCourseId"
             (ngModelChange)="onFilterChange()"
-            class="w-full px-3.5 py-2.5 rounded-lg bg-[#101115] border border-[#242632] text-xs font-mono text-white focus:outline-none focus:border-[#ff4d1c] transition-colors">
+            class="filter-select">
             <option value="">All Academy Courses</option>
             @for (c of courses(); track c.id) {
               <option [value]="c.id">{{ c.title }}</option>
@@ -79,68 +80,71 @@ import { Course } from '../../../models/course.model';
 
       <!-- Toast Feedback -->
       @if (toastMessage()) {
-        <div class="p-3.5 rounded-lg bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs flex items-center justify-between animate-fadeIn">
+        <div class="toast-alert">
           <span>{{ toastMessage() }}</span>
-          <button (click)="toastMessage.set(null)" class="text-emerald-400 hover:text-white">✕</button>
+          <button (click)="toastMessage.set(null)" class="toast-close">✕</button>
         </div>
       }
 
       <!-- STUDENTS TABLE -->
-      <div class="rounded-xl bg-[#0c0d10] border border-[#1e2029] overflow-hidden shadow-2xl">
+      <div class="table-container">
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs">
-            <thead class="bg-[#121318] border-b border-[#1e2029] text-[#717380] font-mono uppercase tracking-wider">
+          <table class="data-table">
+            <thead>
               <tr>
-                <th class="py-3.5 px-4">Student</th>
-                <th class="py-3.5 px-4">Contact</th>
-                <th class="py-3.5 px-4">Course</th>
-                <th class="py-3.5 px-4">Status</th>
-                <th class="py-3.5 px-4">Notes</th>
-                <th class="py-3.5 px-4">Date</th>
-                <th class="py-3.5 px-4 text-right">Quick Message</th>
+                <th>Candidate</th>
+                <th>Contact</th>
+                <th>Course</th>
+                <th>Status</th>
+                <th>Notes / Dossier</th>
+                <th>Registered</th>
+                <th class="text-right">Actions</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-[#181920] text-[#c2c4cf]">
+            <tbody>
               @for (student of students(); track student.id) {
-                <tr class="hover:bg-[#121319] transition-colors">
+                <tr class="table-row">
                   
-                  <!-- Student Name -->
-                  <td class="py-3 px-4 font-semibold text-white whitespace-nowrap">
-                    {{ student.fullName }}
+                  <!-- Candidate Name -->
+                  <td>
+                    <div class="candidate-name" (click)="openDossierModal(student)">
+                      {{ student.fullName }}
+                    </div>
+                    <button type="button" class="view-dossier-link" (click)="openDossierModal(student)">
+                      View Dossier &rarr;
+                    </button>
                   </td>
 
                   <!-- Contact Details -->
-                  <td class="py-3 px-4 space-y-0.5 whitespace-nowrap font-mono text-[11px]">
-                    <div>
-                      <a [href]="'mailto:' + student.email" class="text-[#8e909a] hover:text-[#ff4d1c] transition-colors">
-                        {{ student.email }}
-                      </a>
+                  <td>
+                    <div class="contact-email">
+                      <a [href]="'mailto:' + student.email">{{ student.email }}</a>
                     </div>
-                    <div class="text-[#646673] flex items-center gap-1.5">
+                    <div class="contact-phone">
                       <span>{{ student.phone }}</span>
                       @if (student.whatsappNumber) {
-                        <span class="text-emerald-400 text-[10px]" title="WhatsApp Verified">WA ✓</span>
+                        <span class="wa-badge" title="WhatsApp Verified">WA ✓</span>
                       }
                     </div>
                   </td>
 
                   <!-- Course -->
-                  <td class="py-3 px-4 whitespace-nowrap">
-                    <span class="text-white font-medium block">
+                  <td>
+                    <div class="course-cell-title">
                       {{ student.course?.title || 'Course' }}
-                    </span>
-                    <span class="text-[10px] font-mono text-[#ff4d1c]">
+                    </div>
+                    <span class="course-cell-mode">
                       {{ student.course?.mode | uppercase }}
                     </span>
                   </td>
 
-                  <!-- Inline Status Dropdown -->
-                  <td class="py-3 px-4 whitespace-nowrap">
+                  <!-- Status Select -->
+                  <td>
                     <select
                       [ngModel]="student.status"
                       (ngModelChange)="onUpdateStatus(student, $event)"
                       [ngClass]="getStatusBadgeClass(student.status)"
-                      class="px-2.5 py-1 rounded text-[11px] font-mono font-bold uppercase cursor-pointer border border-[#2d2f3c] focus:outline-none">
+                      class="status-select">
                       <option value="new">NEW</option>
                       <option value="contacted">CONTACTED</option>
                       <option value="enrolled">ENROLLED</option>
@@ -148,35 +152,35 @@ import { Course } from '../../../models/course.model';
                     </select>
                   </td>
 
-                  <!-- Notes (Clickable) -->
-                  <td class="py-3 px-4 max-w-xs truncate text-[#888a96]">
+                  <!-- Notes -->
+                  <td class="notes-cell">
                     <button
                       (click)="openNotesModal(student)"
-                      class="text-left hover:text-white transition-colors underline underline-offset-2">
-                      {{ student.notes || '+ Add Note' }}
+                      class="notes-btn">
+                      {{ student.notes ? (student.notes | slice:0:45) + '...' : '+ Add Note' }}
                     </button>
                   </td>
 
                   <!-- Date -->
-                  <td class="py-3 px-4 font-mono text-[11px] text-[#696b77] whitespace-nowrap">
+                  <td class="date-cell">
                     {{ student.registeredAt | date:'mediumDate' }}
                   </td>
 
                   <!-- Action Buttons -->
-                  <td class="py-3 px-4 text-right whitespace-nowrap space-x-1.5">
+                  <td class="actions-cell">
                     <button
                       (click)="openMessageModal(student, 'email')"
-                      title="Send Follow-up Email"
-                      class="p-1.5 rounded bg-[#171820] hover:bg-[#ff4d1c] text-[#8e909a] hover:text-white border border-[#282a36] transition-colors">
-                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      title="Send Email"
+                      class="btn-icon">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </button>
                     <button
                       (click)="openMessageModal(student, 'whatsapp')"
-                      title="Send WhatsApp Message"
-                      class="p-1.5 rounded bg-[#171820] hover:bg-[#25D366] text-[#8e909a] hover:text-white border border-[#282a36] transition-colors">
-                      <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      title="Send WhatsApp"
+                      class="btn-icon btn-icon-wa">
+                      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                       </svg>
                     </button>
@@ -185,8 +189,8 @@ import { Course } from '../../../models/course.model';
                 </tr>
               } @empty {
                 <tr>
-                  <td colspan="7" class="py-12 text-center text-[#676974] italic">
-                    No student applications match the specified criteria.
+                  <td colspan="7" class="empty-table-cell">
+                    No student applications match the specified filters.
                   </td>
                 </tr>
               }
@@ -195,29 +199,64 @@ import { Course } from '../../../models/course.model';
         </div>
       </div>
 
+      <!-- FULL APPLICATION DOSSIER MODAL -->
+      @if (activeStudentForDossier(); as st) {
+        <div class="modal-backdrop" (click)="activeStudentForDossier.set(null)">
+          <div class="modal-card max-w-xl" (click)="$event.stopPropagation()">
+            <div class="modal-top">
+              <div>
+                <span class="kicker-pill">Application Dossier</span>
+                <h3 class="modal-title">{{ st.fullName }}</h3>
+              </div>
+              <button (click)="activeStudentForDossier.set(null)" class="btn-close">✕</button>
+            </div>
+
+            <div class="modal-body space-y-4">
+              <div class="grid-2-cols">
+                <div><span class="m-label">Email:</span> <div class="m-val">{{ st.email }}</div></div>
+                <div><span class="m-label">Phone:</span> <div class="m-val">{{ st.phone }}</div></div>
+                <div><span class="m-label">WhatsApp:</span> <div class="m-val">{{ st.whatsappNumber || 'N/A' }}</div></div>
+                <div><span class="m-label">Status:</span> <div class="m-val uppercase font-bold text-orange">{{ st.status }}</div></div>
+                <div><span class="m-label">Program:</span> <div class="m-val">{{ st.course?.title }}</div></div>
+                <div><span class="m-label">Registered:</span> <div class="m-val">{{ st.registeredAt | date:'medium' }}</div></div>
+              </div>
+
+              @if (st.notes) {
+                <div class="p-3.5 rounded bg-[#15161d] border border-[#232532] text-xs">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-[#8e909a] mb-1.5">Submitted Application Details:</div>
+                  <pre class="font-sans whitespace-pre-wrap text-[#d0d2dd] leading-relaxed">{{ st.notes }}</pre>
+                </div>
+              }
+            </div>
+
+            <div class="modal-actions gap-2">
+              <button (click)="openMessageModal(st, 'whatsapp')" class="btn-modal-wa">WhatsApp Candidate</button>
+              <button (click)="openMessageModal(st, 'email')" class="btn-modal-email">Email Candidate</button>
+              <button (click)="activeStudentForDossier.set(null)" class="btn-secondary">Close</button>
+            </div>
+          </div>
+        </div>
+      }
+
       <!-- NOTES EDIT MODAL -->
       @if (activeStudentForNotes(); as s) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-          <div class="relative w-full max-w-md rounded-2xl bg-[#131419] border border-[#272936] p-6 space-y-4">
-            <h3 class="font-['Space_Grotesk'] text-lg font-bold text-white">
-              Edit Internal Notes for {{ s.fullName }}
-            </h3>
+        <div class="modal-backdrop" (click)="activeStudentForNotes.set(null)">
+          <div class="modal-card max-w-md" (click)="$event.stopPropagation()">
+            <div class="modal-top">
+              <div>
+                <span class="kicker-pill">Counselor Notes</span>
+                <h3 class="modal-title">{{ s.fullName }}</h3>
+              </div>
+              <button (click)="activeStudentForNotes.set(null)" class="btn-close">✕</button>
+            </div>
             <textarea
               [(ngModel)]="tempNotes"
-              rows="4"
+              rows="6"
               placeholder="Internal counselor notes, payment details, portfolio critique..."
-              class="w-full px-3.5 py-2.5 rounded-lg bg-[#1a1b22] border border-[#2d2f3d] text-white text-xs focus:outline-none focus:border-[#ff4d1c]"></textarea>
-            <div class="flex justify-end gap-2 pt-2">
-              <button
-                (click)="activeStudentForNotes.set(null)"
-                class="px-3.5 py-2 rounded text-xs font-mono text-[#8e909a] hover:text-white">
-                Cancel
-              </button>
-              <button
-                (click)="saveNotes(s)"
-                class="px-4 py-2 rounded bg-[#ff4d1c] text-white font-mono text-xs font-bold uppercase">
-                Save Notes
-              </button>
+              class="w-full px-3.5 py-2.5 rounded-lg bg-[#14151a] border border-[#272935] text-white text-xs focus:outline-none focus:border-[#ff4d1c]"></textarea>
+            <div class="modal-actions">
+              <button (click)="activeStudentForNotes.set(null)" class="btn-secondary">Cancel</button>
+              <button (click)="saveNotes(s)" class="btn-primary">Save Notes</button>
             </div>
           </div>
         </div>
@@ -238,6 +277,396 @@ import { Course } from '../../../models/course.model';
 
     </div>
   `,
+  styles: [`
+    .page-wrap {
+      padding: 32px;
+      max-width: 1440px;
+      margin: 0 auto;
+      font-family: 'Neurial Grotesk', -apple-system, sans-serif;
+      color: #f5f5f7;
+    }
+
+    .page-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+    }
+    .kicker-pill {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ff4d1c;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .page-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin: 0 0 6px;
+      line-height: 1.2;
+    }
+    .page-sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #14151a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 8px 16px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: #1d1f27;
+      color: #ffffff;
+      border-color: rgba(255, 77, 28, 0.4);
+    }
+    .btn-secondary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* FILTERS */
+    .filter-bar {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .filter-input {
+      width: 100%;
+      background: #0f1014;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #ffffff;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .filter-input:focus {
+      border-color: #ff4d1c;
+      box-shadow: 0 0 0 2px rgba(255, 77, 28, 0.2);
+    }
+    .filter-select {
+      width: 100%;
+      background: #0f1014;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #ffffff;
+      outline: none;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+    .filter-select:focus {
+      border-color: #ff4d1c;
+    }
+
+    /* TABLE */
+    .table-container {
+      background: #0d0e12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+    .data-table thead {
+      background: #121318;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .data-table th {
+      padding: 14px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.85);
+      vertical-align: middle;
+    }
+    .table-row:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .candidate-name {
+      font-weight: 700;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    .candidate-name:hover {
+      color: #ff4d1c;
+    }
+    .view-dossier-link {
+      background: none;
+      border: none;
+      color: #ff4d1c;
+      font-size: 11px;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 2px;
+      display: inline-block;
+    }
+    .view-dossier-link:hover { text-decoration: underline; }
+
+    .contact-email a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .contact-email a:hover { color: #ff4d1c; }
+    .contact-phone {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+    .wa-badge {
+      font-size: 9px;
+      color: #34d399;
+      font-weight: 700;
+    }
+
+    .course-cell-title {
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .course-cell-mode {
+      font-size: 10px;
+      color: #ff4d1c;
+      font-weight: 700;
+    }
+
+    .status-select {
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      outline: none;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .badge-blue { background: rgba(37, 99, 235, 0.2); color: #60a5fa; border-color: rgba(37, 99, 235, 0.4); }
+    .badge-amber { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border-color: rgba(245, 158, 11, 0.4); }
+    .badge-emerald { background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: rgba(16, 185, 129, 0.4); }
+    .badge-zinc { background: rgba(113, 113, 122, 0.2); color: #a1a1aa; border-color: rgba(113, 113, 122, 0.4); }
+
+    .notes-btn {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+      cursor: pointer;
+      text-align: left;
+      padding: 0;
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+    .notes-btn:hover { color: #ffffff; text-decoration: underline; }
+
+    .date-cell {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.45);
+      white-space: nowrap;
+    }
+
+    .actions-cell {
+      text-align: right;
+      white-space: nowrap;
+    }
+    .btn-icon {
+      padding: 6px;
+      border-radius: 6px;
+      background: #14151a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 6px;
+      transition: all 0.2s;
+    }
+    .btn-icon:hover {
+      background: #ff4d1c;
+      color: #ffffff;
+      border-color: #ff4d1c;
+    }
+    .btn-icon-wa:hover {
+      background: #22c55e;
+      color: #ffffff;
+      border-color: #22c55e;
+    }
+
+    .empty-table-cell {
+      padding: 40px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-style: italic;
+    }
+
+    .toast-alert {
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .toast-close {
+      background: none;
+      border: none;
+      color: #34d399;
+      cursor: pointer;
+    }
+
+    /* MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-card {
+      background: #111216;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 4px 0 0;
+    }
+    .btn-close {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .btn-close:hover { color: #ffffff; }
+
+    .grid-2-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font-size: 13px;
+    }
+    .m-label { font-size: 11px; color: rgba(255, 255, 255, 0.45); }
+    .m-val { color: #ffffff; font-weight: 600; margin-top: 2px; }
+    .text-orange { color: #ff4d1c; }
+
+    .modal-actions {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: flex-end;
+    }
+    .btn-primary {
+      background: #ff4d1c;
+      color: #ffffff;
+      border: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #ff6538; }
+
+    .btn-modal-wa {
+      background: #22c55e;
+      color: #ffffff;
+      border: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-modal-wa:hover { background: #16a34a; }
+
+    .btn-modal-email {
+      background: #ff4d1c;
+      color: #ffffff;
+      border: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-modal-email:hover { background: #ff6538; }
+
+    @media (max-width: 768px) {
+      .filter-bar { grid-template-columns: 1fr; }
+      .page-wrap { padding: 20px 16px; }
+    }
+  `],
 })
 export class StudentsComponent implements OnInit {
   private adminApi = inject(AdminApiService);
@@ -251,6 +680,7 @@ export class StudentsComponent implements OnInit {
   selectedStatus = '';
   selectedCourseId = '';
 
+  activeStudentForDossier = signal<StudentRecord | null>(null);
   activeStudentForNotes = signal<StudentRecord | null>(null);
   tempNotes = '';
 
@@ -306,6 +736,10 @@ export class StudentsComponent implements OnInit {
     });
   }
 
+  openDossierModal(student: StudentRecord): void {
+    this.activeStudentForDossier.set(student);
+  }
+
   openNotesModal(student: StudentRecord): void {
     this.tempNotes = student.notes || '';
     this.activeStudentForNotes.set(student);
@@ -340,16 +774,11 @@ export class StudentsComponent implements OnInit {
 
   getStatusBadgeClass(status: string): string {
     switch (status) {
-      case 'new':
-        return 'bg-blue-950 text-blue-400';
-      case 'contacted':
-        return 'bg-amber-950 text-amber-400';
-      case 'enrolled':
-        return 'bg-emerald-950 text-emerald-400';
-      case 'dropped':
-        return 'bg-zinc-800 text-zinc-400';
-      default:
-        return 'bg-zinc-800 text-zinc-400';
+      case 'new': return 'badge-blue';
+      case 'contacted': return 'badge-amber';
+      case 'enrolled': return 'badge-emerald';
+      case 'dropped': return 'badge-zinc';
+      default: return 'badge-zinc';
     }
   }
 

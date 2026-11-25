@@ -9,106 +9,99 @@ import { Course, CourseMode } from '../../../models/course.model';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
-    <div class="p-6 sm:p-8 lg:p-10 space-y-8 max-w-7xl mx-auto">
+    <div class="page-wrap">
       
       <!-- Top Action Ribbon -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#1e2029]">
+      <div class="page-top-bar">
         <div>
-          <span class="text-xs font-mono uppercase tracking-[0.2em] text-[#ff4d1c]">
-            Curriculum Management
-          </span>
-          <h1 class="font-['Space_Grotesk'] text-3xl font-extrabold text-white mt-1">
-            Academy Courses
-          </h1>
+          <span class="kicker-pill">Curriculum Management</span>
+          <h1 class="page-title">Academy Courses</h1>
+          <p class="page-sub">Manage masterclasses, tuition pricing, syllabus modules, and public publication status.</p>
         </div>
 
         <button
           (click)="openAddModal()"
-          class="px-5 py-2.5 rounded-lg bg-[#ff4d1c] hover:bg-[#ff6538] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-md flex items-center gap-2">
+          class="btn-primary">
           <span>+ Create New Course</span>
         </button>
       </div>
 
       <!-- Toast Feedback -->
       @if (toastMessage()) {
-        <div class="p-3.5 rounded-lg bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs flex items-center justify-between animate-fadeIn">
+        <div class="toast-alert">
           <span>{{ toastMessage() }}</span>
-          <button (click)="toastMessage.set(null)" class="text-emerald-400 hover:text-white">✕</button>
+          <button (click)="toastMessage.set(null)" class="toast-close">✕</button>
         </div>
       }
 
       <!-- COURSES LIST TABLE -->
-      <div class="rounded-xl bg-[#0c0d10] border border-[#1e2029] overflow-hidden shadow-2xl">
+      <div class="table-container">
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs">
-            <thead class="bg-[#121318] border-b border-[#1e2029] text-[#717380] font-mono uppercase tracking-wider">
+          <table class="data-table">
+            <thead>
               <tr>
-                <th class="py-3.5 px-4">Title &amp; Slug</th>
-                <th class="py-3.5 px-4">Mode</th>
-                <th class="py-3.5 px-4">Duration</th>
-                <th class="py-3.5 px-4">Tuition Fee</th>
-                <th class="py-3.5 px-4">Modules</th>
-                <th class="py-3.5 px-4">Visibility</th>
-                <th class="py-3.5 px-4 text-right">Actions</th>
+                <th>Title &amp; Slug</th>
+                <th>Mode</th>
+                <th>Duration</th>
+                <th>Tuition Fee</th>
+                <th>Modules</th>
+                <th>Visibility</th>
+                <th class="text-right">Actions</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-[#181920] text-[#c2c4cf]">
+            <tbody>
               @for (course of courses(); track course.id) {
-                <tr class="hover:bg-[#121319] transition-colors">
+                <tr class="table-row">
                   
                   <!-- Title & Slug -->
-                  <td class="py-3.5 px-4">
-                    <div class="font-bold text-white text-sm">{{ course.title }}</div>
-                    <div class="font-mono text-[10px] text-[#ff4d1c]">{{ course.slug }}</div>
+                  <td>
+                    <div class="course-name">{{ course.title }}</div>
+                    <div class="course-slug">{{ course.slug }}</div>
                   </td>
 
                   <!-- Mode Badge -->
-                  <td class="py-3.5 px-4 whitespace-nowrap">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase font-bold bg-[#171821] border border-[#272938] text-white">
+                  <td>
+                    <span class="mode-badge">
                       {{ course.mode }}
                     </span>
                   </td>
 
                   <!-- Duration -->
-                  <td class="py-3.5 px-4 font-mono text-white whitespace-nowrap">
+                  <td class="font-mono text-white">
                     {{ course.duration }}
                   </td>
 
                   <!-- Fee -->
-                  <td class="py-3.5 px-4 font-mono text-white whitespace-nowrap">
+                  <td class="font-mono text-white font-bold">
                     ₹{{ course.fee | number }}
                   </td>
 
                   <!-- Syllabus Count -->
-                  <td class="py-3.5 px-4 font-mono text-[#8a8c99] whitespace-nowrap">
+                  <td class="text-[#8e909a]">
                     {{ course.syllabus?.length || 0 }} Units
                   </td>
 
                   <!-- Published Status Toggle -->
-                  <td class="py-3.5 px-4 whitespace-nowrap">
+                  <td>
                     <button
                       (click)="togglePublish(course)"
-                      [class.bg-emerald-950]="course.isPublished"
-                      [class.text-emerald-400]="course.isPublished"
-                      [class.border-emerald-500/30]="course.isPublished"
-                      [class.bg-zinc-900]="!course.isPublished"
-                      [class.text-zinc-500]="!course.isPublished"
-                      [class.border-zinc-700]="!course.isPublished"
-                      class="px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase border transition-colors">
-                      {{ course.isPublished ? 'Published' : 'Draft' }}
+                      [class.badge-emerald]="course.isPublished"
+                      [class.badge-zinc]="!course.isPublished"
+                      class="status-toggle-btn">
+                      {{ course.isPublished ? '● Published' : '○ Draft' }}
                     </button>
                   </td>
 
                   <!-- Actions -->
-                  <td class="py-3.5 px-4 text-right whitespace-nowrap space-x-2">
+                  <td class="actions-cell">
                     <button
                       (click)="openEditModal(course)"
-                      class="px-3 py-1 rounded bg-[#171820] hover:bg-[#20222c] border border-[#2a2c3a] text-white text-[11px] font-mono transition-colors">
+                      class="btn-action">
                       Edit
                     </button>
                     <button
                       (click)="deleteCourse(course)"
-                      class="px-3 py-1 rounded bg-red-950/30 hover:bg-red-900/50 border border-red-500/30 text-red-400 text-[11px] font-mono transition-colors">
+                      class="btn-action btn-delete">
                       Delete
                     </button>
                   </td>
@@ -116,7 +109,7 @@ import { Course, CourseMode } from '../../../models/course.model';
                 </tr>
               } @empty {
                 <tr>
-                  <td colspan="7" class="py-12 text-center text-[#676974] italic">
+                  <td colspan="7" class="empty-table-cell">
                     No courses found in database.
                   </td>
                 </tr>
@@ -128,86 +121,80 @@ import { Course, CourseMode } from '../../../models/course.model';
 
       <!-- CREATE / EDIT COURSE MODAL -->
       @if (isModalOpen()) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fadeIn">
-          <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#111216] border border-[#262835] shadow-2xl p-6 sm:p-8 space-y-6">
+        <div class="modal-backdrop" (click)="closeModal()">
+          <div class="modal-card max-w-2xl max-h-[90vh] overflow-y-auto" (click)="$event.stopPropagation()">
             
-            <div class="flex items-center justify-between pb-4 border-b border-[#20222d]">
+            <div class="modal-top">
               <div>
-                <span class="text-[10px] font-mono uppercase tracking-widest text-[#ff4d1c]">
+                <span class="kicker-pill">
                   {{ isEditing() ? 'Update Program' : 'New Program' }}
                 </span>
-                <h3 class="font-['Space_Grotesk'] text-xl font-bold text-white">
+                <h3 class="modal-title">
                   {{ isEditing() ? 'Edit Academy Course' : 'Create Academy Course' }}
                 </h3>
               </div>
-              <button
-                (click)="closeModal()"
-                class="p-2 rounded-lg text-[#8e909a] hover:text-white hover:bg-[#1a1b24] transition-colors">
-                ✕
-              </button>
+              <button (click)="closeModal()" class="btn-close">✕</button>
             </div>
 
-            <form [formGroup]="courseForm" (ngSubmit)="saveCourse()" class="space-y-4 text-xs">
+            <form [formGroup]="courseForm" (ngSubmit)="saveCourse()" class="space-y-4">
               
               <!-- Title & Slug -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="grid-2-cols">
                 <div>
-                  <label class="block font-mono uppercase text-[#a0a2ad] mb-1">Course Title *</label>
+                  <label class="field-label">Course Title *</label>
                   <input
                     type="text"
                     formControlName="title"
                     (input)="onTitleInput()"
                     placeholder="e.g. Advanced Clay Surfacing"
-                    class="w-full px-3.5 py-2.5 rounded-lg bg-[#181921] border border-[#2b2d3c] text-white text-xs focus:outline-none focus:border-[#ff4d1c]" />
+                    class="form-input" />
                 </div>
                 <div>
-                  <label class="block font-mono uppercase text-[#a0a2ad] mb-1">URL Slug *</label>
+                  <label class="field-label">URL Slug *</label>
                   <input
                     type="text"
                     formControlName="slug"
                     placeholder="e.g. advanced-clay-surfacing"
-                    class="w-full px-3.5 py-2.5 rounded-lg bg-[#181921] border border-[#2b2d3c] text-white text-xs font-mono focus:outline-none focus:border-[#ff4d1c]" />
+                    class="form-input font-mono" />
                 </div>
               </div>
 
               <!-- Mode, Duration, Fee -->
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="grid-3-cols">
                 <div>
-                  <label class="block font-mono uppercase text-[#a0a2ad] mb-1">Delivery Mode *</label>
-                  <select
-                    formControlName="mode"
-                    class="w-full px-3.5 py-2.5 rounded-lg bg-[#181921] border border-[#2b2d3c] text-white text-xs font-mono focus:outline-none focus:border-[#ff4d1c]">
+                  <label class="field-label">Delivery Mode *</label>
+                  <select formControlName="mode" class="form-input">
                     <option value="offline">Offline (Studio)</option>
                     <option value="hybrid">Hybrid</option>
                     <option value="online">Online</option>
                   </select>
                 </div>
                 <div>
-                  <label class="block font-mono uppercase text-[#a0a2ad] mb-1">Duration *</label>
+                  <label class="field-label">Duration *</label>
                   <input
                     type="text"
                     formControlName="duration"
                     placeholder="e.g. 10 Weeks"
-                    class="w-full px-3.5 py-2.5 rounded-lg bg-[#181921] border border-[#2b2d3c] text-white text-xs focus:outline-none focus:border-[#ff4d1c]" />
+                    class="form-input" />
                 </div>
                 <div>
-                  <label class="block font-mono uppercase text-[#a0a2ad] mb-1">Tuition Fee (₹) *</label>
+                  <label class="field-label">Tuition Fee (₹) *</label>
                   <input
                     type="number"
                     formControlName="fee"
                     placeholder="e.g. 65000"
-                    class="w-full px-3.5 py-2.5 rounded-lg bg-[#181921] border border-[#2b2d3c] text-white text-xs font-mono focus:outline-none focus:border-[#ff4d1c]" />
+                    class="form-input" />
                 </div>
               </div>
 
               <!-- Description -->
               <div>
-                <label class="block font-mono uppercase text-[#a0a2ad] mb-1">Description *</label>
+                <label class="field-label">Description *</label>
                 <textarea
                   formControlName="description"
                   rows="3"
                   placeholder="Overview of the program, practical outcomes, and target students..."
-                  class="w-full px-3.5 py-2.5 rounded-lg bg-[#181921] border border-[#2b2d3c] text-white text-xs focus:outline-none focus:border-[#ff4d1c]"></textarea>
+                  class="form-input"></textarea>
               </div>
 
               <!-- Published Toggle -->
@@ -216,45 +203,41 @@ import { Course, CourseMode } from '../../../models/course.model';
                   type="checkbox"
                   formControlName="isPublished"
                   id="isPub"
-                  class="rounded border-[#343744] bg-[#1a1b22] text-[#ff4d1c] focus:ring-0" />
-                <label for="isPub" class="font-mono text-xs text-white cursor-pointer">
-                  Publish on public academy catalog
+                  class="rounded bg-[#1a1b22] text-[#ff4d1c] focus:ring-0" />
+                <label for="isPub" class="text-xs text-white cursor-pointer font-medium">
+                  Publish on public academy website catalog
                 </label>
               </div>
 
               <!-- Syllabus Builder -->
-              <div class="space-y-3 pt-3 border-t border-[#20222d]">
-                <div class="flex items-center justify-between">
-                  <span class="font-mono uppercase text-[#ff4d1c] font-bold">Curriculum Syllabus Modules</span>
+              <div class="pt-4 border-t border-[#1e2029]">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-xs font-bold uppercase text-[#ff4d1c]">Curriculum Syllabus Modules</span>
                   <button
                     type="button"
                     (click)="addSyllabusItem()"
-                    class="px-2.5 py-1 rounded bg-[#1a1b22] hover:bg-[#252733] border border-[#2e3040] text-[10px] font-mono text-white">
+                    class="btn-secondary text-[11px] py-1 px-3">
                     + Add Module
                   </button>
                 </div>
 
-                <div formArrayName="syllabus" class="space-y-2.5">
+                <div formArrayName="syllabus" class="space-y-2">
                   @for (mod of syllabusFormArray.controls; track $index) {
-                    <div [formGroupName]="$index" class="p-3 rounded-lg bg-[#161720] border border-[#242633] flex items-start gap-2">
-                      <div class="w-1/3">
-                        <input
-                          type="text"
-                          formControlName="weekOrModule"
-                          placeholder="Module / Week"
-                          class="w-full px-2.5 py-1.5 rounded bg-[#1f202b] border border-[#2c2e3d] text-white text-[11px]" />
-                      </div>
-                      <div class="flex-1">
-                        <input
-                          type="text"
-                          formControlName="topic"
-                          placeholder="Module Topic Title"
-                          class="w-full px-2.5 py-1.5 rounded bg-[#1f202b] border border-[#2c2e3d] text-white text-[11px]" />
-                      </div>
+                    <div [formGroupName]="$index" class="syllabus-row">
+                      <input
+                        type="text"
+                        formControlName="weekOrModule"
+                        placeholder="e.g. Module 01"
+                        class="form-input w-1/3 text-xs" />
+                      <input
+                        type="text"
+                        formControlName="topic"
+                        placeholder="Module Topic Title"
+                        class="form-input flex-1 text-xs" />
                       <button
                         type="button"
                         (click)="removeSyllabusItem($index)"
-                        class="p-1.5 text-[#6c6e7b] hover:text-red-400">
+                        class="p-2 text-[#6c6e7b] hover:text-red-400">
                         ✕
                       </button>
                     </div>
@@ -263,17 +246,9 @@ import { Course, CourseMode } from '../../../models/course.model';
               </div>
 
               <!-- Submit Buttons -->
-              <div class="pt-4 border-t border-[#20222d] flex justify-end gap-3">
-                <button
-                  type="button"
-                  (click)="closeModal()"
-                  class="px-4 py-2 rounded text-xs font-mono text-[#8e909a] hover:text-white">
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  [disabled]="courseForm.invalid || isSaving()"
-                  class="px-5 py-2.5 rounded bg-[#ff4d1c] hover:bg-[#ff6538] disabled:opacity-50 text-white font-mono text-xs font-bold uppercase tracking-wider shadow-md">
+              <div class="modal-actions gap-2">
+                <button type="button" (click)="closeModal()" class="btn-secondary">Cancel</button>
+                <button type="submit" [disabled]="courseForm.invalid || isSaving()" class="btn-primary">
                   {{ isSaving() ? 'Saving...' : 'Save Course' }}
                 </button>
               </div>
@@ -286,6 +261,244 @@ import { Course, CourseMode } from '../../../models/course.model';
 
     </div>
   `,
+  styles: [`
+    .page-wrap {
+      padding: 32px;
+      max-width: 1440px;
+      margin: 0 auto;
+      font-family: 'Neurial Grotesk', -apple-system, sans-serif;
+      color: #f5f5f7;
+    }
+
+    .page-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+    }
+    .kicker-pill {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ff4d1c;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .page-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin: 0 0 6px;
+      line-height: 1.2;
+    }
+    .page-sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0;
+    }
+
+    .btn-primary {
+      background: #ff4d1c;
+      color: #ffffff;
+      border: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(255, 77, 28, 0.35);
+      transition: all 0.2s;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: #ff6538;
+      transform: translateY(-1px);
+    }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-secondary {
+      background: #14151a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 8px 16px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: #1d1f27; color: #ffffff; }
+
+    /* TABLE */
+    .table-container {
+      background: #0d0e12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+    .data-table thead {
+      background: #121318;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .data-table th {
+      padding: 14px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.85);
+      vertical-align: middle;
+    }
+    .table-row:hover { background: rgba(255, 255, 255, 0.02); }
+
+    .course-name { font-weight: 700; color: #ffffff; }
+    .course-slug { font-size: 10px; color: #ff4d1c; font-family: 'JetBrains Mono', monospace; }
+    .mode-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #181920;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #ffffff;
+    }
+
+    .status-toggle-btn {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3); }
+    .badge-zinc { background: rgba(113, 113, 122, 0.15); color: #a1a1aa; border-color: rgba(113, 113, 122, 0.3); }
+
+    .actions-cell { text-align: right; white-space: nowrap; }
+    .btn-action {
+      background: #14151a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 6px;
+    }
+    .btn-action:hover { background: #20222c; border-color: rgba(255, 255, 255, 0.25); }
+    .btn-delete { color: #f87171; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.08); }
+    .btn-delete:hover { background: rgba(239, 68, 68, 0.2); }
+
+    .empty-table-cell { padding: 40px; text-align: center; color: rgba(255, 255, 255, 0.4); font-style: italic; }
+
+    .toast-alert {
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .toast-close { background: none; border: none; color: #34d399; cursor: pointer; }
+
+    /* MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-card {
+      background: #111216;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .modal-title { font-size: 18px; font-weight: 700; color: #ffffff; margin: 4px 0 0; }
+    .btn-close { background: none; border: none; color: rgba(255, 255, 255, 0.6); font-size: 16px; cursor: pointer; padding: 4px; }
+    .btn-close:hover { color: #ffffff; }
+
+    .grid-2-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .field-label { display: block; font-size: 11px; font-weight: 600; color: rgba(255, 255, 255, 0.65); margin-bottom: 4px; }
+    .form-input {
+      width: 100%;
+      background: #15161c;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: #ffffff;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .form-input:focus { border-color: #ff4d1c; }
+
+    .syllabus-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .modal-actions {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2-cols, .grid-3-cols { grid-template-columns: 1fr; }
+      .page-wrap { padding: 20px 16px; }
+    }
+  `],
 })
 export class CoursesComponent implements OnInit {
   private fb = inject(FormBuilder);
@@ -334,26 +547,13 @@ export class CoursesComponent implements OnInit {
 
   onTitleInput(): void {
     if (!this.isEditing()) {
-      const titleVal = this.courseForm.get('title')?.value || '';
-      const slug = titleVal
+      const val = this.courseForm.get('title')?.value || '';
+      const slug = val
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-|-$/g, '');
+        .replace(/^-+|-+$/g, '');
       this.courseForm.patchValue({ slug });
     }
-  }
-
-  addSyllabusItem(weekOrModule = '', topic = ''): void {
-    this.syllabusFormArray.push(
-      this.fb.group({
-        weekOrModule: [weekOrModule, Validators.required],
-        topic: [topic, Validators.required],
-      })
-    );
-  }
-
-  removeSyllabusItem(index: number): void {
-    this.syllabusFormArray.removeAt(index);
   }
 
   openAddModal(): void {
@@ -361,31 +561,36 @@ export class CoursesComponent implements OnInit {
     this.currentEditingId = null;
     this.courseForm.reset({
       mode: 'offline',
-      fee: 50000,
-      duration: '8 Weeks',
       isPublished: true,
+      fee: 65000,
+      duration: '8 Weeks',
     });
     this.syllabusFormArray.clear();
-    this.addSyllabusItem('Module 01', 'Foundations & Tooling');
     this.isModalOpen.set(true);
   }
 
-  openEditModal(course: Course): void {
+  openEditModal(c: Course): void {
     this.isEditing.set(true);
-    this.currentEditingId = course.id;
+    this.currentEditingId = c.id;
     this.courseForm.patchValue({
-      title: course.title,
-      slug: course.slug,
-      description: course.description,
-      duration: course.duration,
-      fee: course.fee,
-      mode: course.mode,
-      isPublished: course.isPublished,
+      title: c.title,
+      slug: c.slug,
+      description: c.description,
+      duration: c.duration,
+      fee: c.fee,
+      mode: c.mode,
+      isPublished: c.isPublished,
     });
+
     this.syllabusFormArray.clear();
-    if (course.syllabus && Array.isArray(course.syllabus)) {
-      course.syllabus.forEach((item) => {
-        this.addSyllabusItem(item.weekOrModule, item.topic);
+    if (c.syllabus && c.syllabus.length > 0) {
+      c.syllabus.forEach((s) => {
+        this.syllabusFormArray.push(
+          this.fb.group({
+            weekOrModule: [s.weekOrModule, Validators.required],
+            topic: [s.topic, Validators.required],
+          })
+        );
       });
     }
     this.isModalOpen.set(true);
@@ -393,6 +598,19 @@ export class CoursesComponent implements OnInit {
 
   closeModal(): void {
     this.isModalOpen.set(false);
+  }
+
+  addSyllabusItem(): void {
+    this.syllabusFormArray.push(
+      this.fb.group({
+        weekOrModule: ['Module ' + (this.syllabusFormArray.length + 1), Validators.required],
+        topic: ['', Validators.required],
+      })
+    );
+  }
+
+  removeSyllabusItem(index: number): void {
+    this.syllabusFormArray.removeAt(index);
   }
 
   saveCourse(): void {
@@ -405,51 +623,62 @@ export class CoursesComponent implements OnInit {
       this.adminApi.updateCourse(this.currentEditingId, formVal).subscribe({
         next: (res) => {
           this.isSaving.set(false);
-          this.closeModal();
-          this.showToast(`Updated course: ${res.data?.title}`);
-          this.loadCourses();
+          if (res.success && res.data) {
+            this.showToast(`Updated course "${res.data.title}" successfully`);
+            this.loadCourses();
+            this.closeModal();
+          }
         },
         error: (err) => {
           this.isSaving.set(false);
-          alert(err.error?.message || 'Update failed');
+          console.error('Failed to update course:', err);
         },
       });
     } else {
       this.adminApi.createCourse(formVal).subscribe({
         next: (res) => {
           this.isSaving.set(false);
-          this.closeModal();
-          this.showToast(`Created course: ${res.data?.title}`);
-          this.loadCourses();
+          if (res.success && res.data) {
+            this.showToast(`Created new course "${res.data.title}" successfully`);
+            this.loadCourses();
+            this.closeModal();
+          }
         },
         error: (err) => {
           this.isSaving.set(false);
-          alert(err.error?.message || 'Creation failed');
+          console.error('Failed to create course:', err);
         },
       });
     }
   }
 
   togglePublish(course: Course): void {
-    const updatedStatus = !course.isPublished;
-    this.adminApi.updateCourse(course.id, { isPublished: updatedStatus }).subscribe({
-      next: () => {
-        course.isPublished = updatedStatus;
-        this.showToast(`Course "${course.title}" is now ${updatedStatus ? 'Published' : 'Draft'}`);
+    const newStatus = !course.isPublished;
+    this.adminApi.updateCourse(course.id, { isPublished: newStatus }).subscribe({
+      next: (res) => {
+        if (res.success && res.data) {
+          course.isPublished = res.data.isPublished;
+          this.showToast(
+            `Course "${course.title}" is now ${course.isPublished ? 'PUBLISHED' : 'DRAFT'}`
+          );
+        }
       },
+      error: (err) => console.error('Failed to toggle publish status:', err),
     });
   }
 
   deleteCourse(course: Course): void {
-    if (confirm(`Are you sure you want to delete course "${course.title}"?`)) {
-      this.adminApi.deleteCourse(course.id).subscribe({
-        next: () => {
-          this.showToast(`Deleted course: ${course.title}`);
-          this.loadCourses();
-        },
-        error: (err) => alert(err.error?.message || 'Delete failed'),
-      });
-    }
+    if (!confirm(`Are you sure you want to permanently delete "${course.title}"?`)) return;
+
+    this.adminApi.deleteCourse(course.id).subscribe({
+      next: (res) => {
+        if (res.success) {
+          this.showToast(`Course "${course.title}" deleted.`);
+          this.courses.update((list) => list.filter((c) => c.id !== course.id));
+        }
+      },
+      error: (err) => console.error('Failed to delete course:', err),
+    });
   }
 
   showToast(msg: string): void {

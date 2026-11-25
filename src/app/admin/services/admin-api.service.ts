@@ -219,4 +219,15 @@ export class AdminApiService {
       { params }
     );
   }
+
+  getLogs(filters?: {
+    recipientId?: string;
+    recipientType?: string;
+    channel?: string;
+    status?: string;
+    page?: number;
+    limit?: number;
+  }): Observable<ApiResponse<CommunicationLogRecord[]>> {
+    return this.getCommunicationLogs(filters);
+  }
 }

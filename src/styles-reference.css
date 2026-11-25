@@ -108,9 +108,9 @@ section::after{content:"";position:absolute;inset:0;background:linear-gradient(9
 .wrap{position:relative;z-index:2;width:100%;padding:130px 5vw 11vh}
 .kicker{font:500 12px/1 var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:14px}
 .kicker::before{content:"";width:34px;height:1px;background:var(--accent)}
-h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.06}
-h1{font-size:clamp(52px,8.5vw,170px)}
-h2{font-size:clamp(38px,6.4vw,104px)}
+.sec h1, .wrap > h1, #home h1, .sec h2, .wrap > h2, #home h2{font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.06}
+.sec h1, .wrap > h1, #home h1{font-size:clamp(52px,8.5vw,170px)}
+.sec h2, .wrap > h2, #home h2{font-size:clamp(38px,6.4vw,104px)}
 .cols{display:grid;grid-template-columns:1.25fr 1fr;gap:6vw;margin-top:46px;padding-top:36px;border-top:1px solid var(--line)}
 .cols p{font-size:clamp(16px,1.25vw,19px);line-height:1.7;font-weight:300;color:var(--muted)}
 .cols p+p{margin-top:16px}
@@ -274,8 +274,8 @@ section.in .r4{transition-delay:.46s}
   .burger.x span:nth-child(1){transform:translateY(9px) rotate(45deg)}
   .burger.x span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
   .kicker{font-size:17px}
-  h1{font-size:clamp(170px,8.5vw,340px)}
-  h2{font-size:clamp(140px,6vw,260px)}
+  .sec h1, .wrap > h1, #home h1{font-size:clamp(170px,8.5vw,340px)}
+  .sec h2, .wrap > h2, #home h2{font-size:clamp(140px,6vw,260px)}
   .cols p,.lead{font-size:26px}
   ul.points li{font-size:24px;padding:22px 0}
   ul.points li span{font-size:16px}
@@ -1240,7 +1240,7 @@ nav.top>.item.active>a,nav.top>.item.active>button{color:var(--accent)!important
    EXPLICIT FONT CONTRAST & LEGIBILITY SAFEGUARDS (ALL SECTIONS)
    ============================================================ */
 /* Global Heading & Body Baseline Contrast */
-h1,h2{color:var(--ink);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+.sec h1, .wrap > h1, #home h1, .sec h2, .wrap > h2, #home h2{color:var(--ink);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
 .cols p{color:var(--muted)}
 .cols p strong{color:var(--ink);font-weight:600}
 ul.points li{color:var(--ink)}
@@ -1501,7 +1501,7 @@ main#main::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.26);backgr
 /* ------------------------------------------------------------------
    TYPOGRAPHY — Plus Jakarta Sans / Inter
    ------------------------------------------------------------------ */
-h1,h2,h3,h4,.logo{font-family:var(--display)}
+.sec h1, .sec h2, .sec h3, .sec h4, .wrap h1, .wrap h2, .wrap h3, .wrap h4, #home h1, #home h2, .logo{font-family:var(--display)}
 h1,h2{font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance}
 h1{font-weight:800;letter-spacing:-0.035em;line-height:1.02}
 h2{line-height:1.04}
