@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#18181b"/>
+      <stop offset="100%" stop-color="#08080a"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ff6b3d"/>
+      <stop offset="100%" stop-color="#e03600"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Dark Automotive Squircle -->
+  <rect x="2" y="2" width="124" height="124" rx="28" fill="url(#bg)"/>
+  <rect x="2" y="2" width="124" height="124" rx="28" fill="none" stroke="#ff4d1c" stroke-width="2.5" stroke-opacity="0.5"/>
+  
+  <!-- Stylized Automotive '2' in Ultra-Clean Crisp White -->
+  <path d="M 24 46 C 24 35 33 28 46 28 C 59 28 67 35 67 45 C 67 53 62 59 51 69 L 32 86 L 68 86 L 68 96 L 23 96 L 23 86 L 45 66 C 54 57 57 52 57 45 C 57 39 52 36 46 36 C 40 36 34 39 33 46 Z" fill="#FFFFFF"/>
+  
+  <!-- Dynamic Speedform 'N' in 2NOMADS Radiant Orange -->
+  <path d="M 72 32 L 83 32 L 100 70 L 100 32 L 110 32 L 110 96 L 99 96 L 82 58 L 82 96 L 72 96 Z" fill="url(#orangeGrad)"/>
+
+  <!-- Orange Speed Accent Dot -->
+  <circle cx="110" cy="22" r="3.5" fill="#ff4d1c"/>
+</svg>
