@@ -245,6 +245,86 @@
       <a href="#clay-service"><b>01</b><em>Clay Service</em></a>
       <a href="#prototype-service"><b>02</b><em>Prototype Service</em></a>
     </div>
+
+    <!-- CINEMATIC STUDIO SCROLL VIDEO SHOWCASE -->
+    <div class="studio-video-wrapper r r3" id="studioVideoWrapper">
+      <div class="studio-video-container" id="studioVideoContainer">
+        <!-- VIDEO ELEMENT (SCROLL-TRIGGERED AUTOPLAY) -->
+        <video
+          id="studioReelVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          preload="metadata"
+          poster="/images/services.jpg"
+          class="studio-video-element"
+          aria-label="2NOMADS Studio OEM Styling & Prototyping Reel">
+          <source src="/media/studio-showcase.mp4" type="video/mp4">
+          <source src="/images/gallery/bsa-bobber-showcase.mp4" type="video/mp4">
+          <source src="/media/scan-video.mp4" type="video/mp4">
+        </video>
+
+        <!-- SUBTLE CINEMATIC VIGNETTE & FILM OVERLAY -->
+        <div class="studio-video-vignette"></div>
+
+        <!-- TOP HUD BAR -->
+        <div class="studio-video-hud-top">
+          <div class="studio-hud-badge">
+            <span class="studio-rec-dot"></span>
+            <span>2NOMADS STUDIO // OEM CLAY &amp; PROTOTYPE REEL</span>
+          </div>
+          <div class="studio-hud-controls">
+            <!-- MUTE / UNMUTE BUTTON -->
+            <button
+              type="button"
+              class="studio-hud-btn"
+              (click)="toggleStudioVideoAudio()"
+              [title]="isStudioMuted() ? 'Turn Sound On' : 'Mute Video'">
+              <svg *ngIf="isStudioMuted()" width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+              </svg>
+              <svg *ngIf="!isStudioMuted()" width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              </svg>
+              <span>{{ isStudioMuted() ? 'Muted' : 'Sound On' }}</span>
+            </button>
+
+            <!-- PLAY / PAUSE BUTTON -->
+            <button
+              type="button"
+              class="studio-hud-btn"
+              (click)="toggleStudioVideoPlayback()"
+              [title]="isStudioPlaying() ? 'Pause Reel' : 'Play Reel'">
+              <svg *ngIf="isStudioPlaying()" width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <svg *ngIf="!isStudioPlaying()" width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{{ isStudioPlaying() ? 'Pause' : 'Play' }}</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- BOTTOM HUD BAR -->
+        <div class="studio-video-hud-bottom">
+          <div class="studio-hud-caption">
+            <span class="studio-caption-title">Pune Studio &amp; Prototyping Bay</span>
+            <span class="studio-caption-desc">Full-scale clay modeling, 3D laser scanning &amp; prototype builds for OEM mobility programs</span>
+          </div>
+          <div class="studio-hud-tags">
+            <span class="studio-tag">1:1 Clay</span>
+            <span class="studio-tag">Laser CMM</span>
+            <span class="studio-tag">Running Prototype</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 

@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   
   // Cinematic Video Showcase Signals
   isVideoMuted = signal<boolean>(true);
+  isStudioMuted = signal<boolean>(true);
+  isStudioPlaying = signal<boolean>(true);
 
   private cleanupFns: Array<() => void> = [];
 
@@ -168,6 +170,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Video Scroll Showcase
     this.initShowcaseVideoScrubber(main);
+
+    // Studio Video Scroll Observer
+    this.initStudioVideoScroller(main);
   }
 
   private initGallerySystem(main: HTMLElement): void {
@@ -764,6 +769,53 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     video.muted = !video.muted;
     this.isVideoMuted.set(video.muted);
+  }
+
+  toggleStudioVideoAudio(): void {
+    const video = document.getElementById('studioReelVideo') as HTMLVideoElement | null;
+    if (!video) return;
+
+    video.muted = !video.muted;
+    this.isStudioMuted.set(video.muted);
+  }
+
+  toggleStudioVideoPlayback(): void {
+    const video = document.getElementById('studioReelVideo') as HTMLVideoElement | null;
+    if (!video) return;
+
+    if (video.paused) {
+      video.play().then(() => this.isStudioPlaying.set(true)).catch(() => {});
+    } else {
+      video.pause();
+      this.isStudioPlaying.set(false);
+    }
+  }
+
+  private initStudioVideoScroller(main: HTMLElement): void {
+    const container = document.getElementById('studioVideoContainer');
+    const video = document.getElementById('studioReelVideo') as HTMLVideoElement | null;
+    if (!container || !video) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              container.classList.add('in-view');
+              if (this.isStudioPlaying()) {
+                video.play().catch(() => {});
+              }
+            } else {
+              container.classList.remove('in-view');
+              video.pause();
+            }
+          });
+        },
+        { root: main, threshold: [0.08, 0.25], rootMargin: '60px 0px 60px 0px' }
+      );
+      observer.observe(container);
+      this.cleanupFns.push(() => observer.disconnect());
+    }
   }
 
   ngOnDestroy(): void {

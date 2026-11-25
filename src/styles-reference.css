@@ -1859,6 +1859,202 @@ section::after{background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,transparent 
 #studio .cards a:hover::after{color:var(--accent)}
 
 /* ------------------------------------------------------------------
+   STUDIO SECTION — CINEMATIC SCROLL VIDEO SHOWCASE
+   ------------------------------------------------------------------ */
+.studio-video-wrapper {
+  margin-top: 42px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+.studio-video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 580px;
+  background: #09090c;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 32px 80px -16px rgba(0, 0, 0, 0.55), 0 0 50px rgba(255, 77, 28, 0.08);
+  transform: translateY(16px) scale(0.98);
+  opacity: 0.92;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease, box-shadow 0.6s ease;
+  will-change: transform, opacity;
+}
+#studio.in .studio-video-container,
+.studio-video-container.in-view {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  box-shadow: 0 36px 90px -16px rgba(0, 0, 0, 0.65), 0 0 65px rgba(255, 77, 28, 0.12);
+}
+.studio-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.studio-video-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 45%, rgba(0, 0, 0, 0.4) 85%, rgba(0, 0, 0, 0.72) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 22%, transparent 75%, rgba(0,0,0,0.75) 100%);
+}
+.studio-video-hud-top {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 3;
+}
+.studio-hud-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(12, 13, 17, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-family: 'Space Grotesk', var(--body), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-transform: uppercase;
+}
+.studio-rec-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff4d1c;
+  box-shadow: 0 0 8px #ff4d1c;
+  animation: pulseRec 1.6s infinite ease-in-out;
+}
+@keyframes pulseRec {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+.studio-hud-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+.studio-hud-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(12, 13, 17, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ececf1;
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.studio-hud-btn:hover {
+  background: rgba(255, 77, 28, 0.22);
+  border-color: rgba(255, 77, 28, 0.45);
+  color: #fff;
+}
+.studio-video-hud-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 22px;
+  right: 22px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  pointer-events: none;
+  z-index: 3;
+}
+.studio-hud-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.studio-caption-title {
+  font-family: 'Space Grotesk', var(--display);
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+.studio-caption-desc {
+  font-family: var(--body);
+  font-size: 11.5px;
+  color: rgba(236, 236, 241, 0.72);
+  max-width: 520px;
+  line-height: 1.4;
+}
+.studio-hud-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: auto;
+}
+.studio-tag {
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: 10px;
+  font-family: monospace;
+  color: #a4a6b5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+@media (max-width: 768px) {
+  .studio-video-wrapper {
+    margin-top: 30px;
+  }
+  .studio-video-container {
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+    max-height: none;
+  }
+  .studio-video-hud-top {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+  .studio-hud-badge span:last-child {
+    font-size: 9.5px;
+  }
+  .studio-video-hud-bottom {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .studio-caption-title {
+    font-size: 13px;
+  }
+  .studio-caption-desc {
+    font-size: 10.5px;
+  }
+  .studio-hud-tags {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------
    TESTIMONY CARDS
    ------------------------------------------------------------------ */
 .quotes{gap:16px;margin-top:44px}
