@@ -1,0 +1,1716 @@
+
+
+<app-header></app-header>
+
+<main id="main">
+
+<!-- HOME FULLSCREEN AUTO IMAGE SLIDER -->
+<!-- HOME -->
+<section id="home">
+  <div class="bg bg-hero"></div>
+  <div class="wrap">
+    <div class="kicker r">Transportation Design · Pune, India</div>
+    <h1 class="r r2">2NOMADS</h1>
+    <p class="lead r r3">We design, sculpt and build machines that move — and we train the people who will design the next ones.</p>
+    <div class="btns r r3">
+      <a class="btn" href="#enroll">Enroll — Season 01</a>
+      <a class="btn ghost" href="#academy">Explore Academy</a>
+      <a class="btn ghost" routerLink="/gallery" style="display: inline-flex; align-items: center; gap: 6px;">
+        <span>Gallery</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint" (click)="scrollToShowcase()" style="cursor: pointer;">Scroll ↓</div>
+</section>
+
+<!-- CINEMATIC FULLSCREEN VIDEO SCROLL SHOWCASE (SEASON 01 REEL) -->
+<section id="showcase" class="showcase-section">
+  <div class="showcase-sticky-container">
+    <div class="showcase-fullscreen-wrap">
+      <video
+        id="showcaseVideo"
+        src="/media/hero-scroll-showcase.mp4"
+        preload="auto"
+        autoplay
+        muted
+        playsinline
+        webkit-playsinline
+        loop
+        class="showcase-fullscreen-video">
+      </video>
+
+      <!-- SUBTLE CINEMATIC VIGNETTE -->
+      <div class="showcase-vignette"></div>
+
+      <!-- FLOATING MUTE / UNMUTE TOGGLE -->
+      <div class="showcase-sound-control">
+        <button
+          type="button"
+          class="showcase-audio-btn"
+          (click)="toggleVideoAudio()"
+          [title]="isVideoMuted() ? 'Turn Sound On' : 'Mute Sound'">
+          <svg *ngIf="isVideoMuted()" width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+          </svg>
+          <svg *ngIf="!isVideoMuted()" width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+          <span>{{ isVideoMuted() ? 'Muted' : 'Sound On' }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE (FULLSCREEN IMMERSIVE STUDIO BACKGROUND) -->
+<section id="who-we-are" class="tone who-fullscreen">
+  <div class="side-photo" style="--img:url('/media/who-we-are.jpg');--img-sm:url('/media/who-we-are-sm.jpg')"></div>
+  <div class="wrap">
+    <div class="kicker r">Who We Are</div>
+    <h2 class="r r2">Designers who build with their hands.</h2>
+    <div class="cols r r3">
+      <div>
+        <p><strong>2NOMADS is a transportation design studio based in Pune</strong>, founded by R Donshong Koren — automobile designer, clay modeller and educator, and former Head of the Transportation Design Department in Canada.</p>
+        <p>We work with OEMs on clay models, design correction and full working prototypes, while our Academy trains the next generation of designers in the same studio, on the same real projects.</p>
+      </div>
+      <ul class="points">
+        <li><span>01</span>OEM clay modelling — scale and full-size</li>
+        <li><span>02</span>Show and working prototypes, EV and ICE</li>
+        <li><span>03</span>Hands-on design education</li>
+        <li><span>04</span>In-house EV projects — Oneaxi Scooter</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMY OVERVIEW -->
+<section id="academy" class="tone with-photo with-art">
+  <div class="bg bg-academy"></div>
+  <div class="side-art"><img src="/media/academy-art.jpg" alt="Clay modeller shaping a scooter model in the 2NOMADS studio"></div>
+  <div class="wrap">
+    <div class="kicker r">Academy</div>
+    <h2 class="r r2">Learn from those who build.</h2>
+    <p class="lead r r3">Concept to prototype — taught by industry-hardened designers, in a working studio. Evening batches so you never miss college or work.</p>
+    <div class="cards r r3">
+      <a href="#transportation-design"><b>01</b><em>Transportation Design</em></a>
+      <a href="#clay-modelling"><b>02</b><em>Clay Modelling</em></a>
+      <a href="#digital-sculpting"><b>03</b><em>Digital Sculpting</em></a>
+      <a href="#scanning"><b>04</b><em>Scanning</em></a>
+      <a href="#prototype"><b>05</b><em>Prototype — Show &amp; Working</em></a>
+    </div>
+  </div>
+</section>
+
+<section id="transportation-design" class="light paper">
+  <div class="bg bg-td"></div>
+  <div class="wrap">
+    <div class="kicker r">Academy · 01</div>
+    <h2 class="r r2">Transportation<br>Design</h2>
+    <div class="cols r r3">
+      <div><p>Learn how a vehicle is born — from research and concept thinking to sketching, proportion and virtual rendering. Work on real briefs the way a professional design studio does.</p></div>
+      <ul class="points"><li><span>—</span>Research &amp; concept thinking</li><li><span>—</span>Sketching &amp; proportion</li><li><span>—</span>Digital rendering</li><li><span>—</span>Design presentation</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="clay-modelling" class="tone with-photo with-art">
+  <div class="bg bg-clay"></div>
+  <div class="side-art"><img src="/media/clay-art.jpg" alt="Full-size clay model being sculpted"></div>
+  <div class="wrap">
+    <div class="kicker r">Academy · 02</div>
+    <h2 class="r r2">Clay Modelling</h2>
+    <div class="cols r r3">
+      <div><p>The craft at the heart of automotive design. Learn tools, armatures, surfacing and how to read highlights — taught by a clay modeller who has trained students under SIAM and MITID.</p></div>
+      <ul class="points"><li><span>—</span>Armature &amp; clay build-up</li><li><span>—</span>Traditional clay tools</li><li><span>—</span>Surface &amp; highlight reading</li><li><span>—</span>Scale to full-size models</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="digital-sculpting" class="tone">
+  <div class="bg bg-sculpt"></div><span class="ph">Digital sculpt screen</span>
+  <div class="wrap">
+    <div class="kicker r">Academy · 03</div>
+    <h2 class="r r2">Digital<br>Sculpting</h2>
+    <div class="cols r r3">
+      <div><p>Sculpt form on screen with the same eye you use in clay. Build, refine and visualise designs digitally, ready for milling, printing or presentation.</p></div>
+      <ul class="points"><li><span>—</span>Digital form development</li><li><span>—</span>Surface refinement</li><li><span>—</span>Visualisation</li><li><span>—</span>Preparing data for milling &amp; printing</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="scanning" class="tone has-video">
+  <div class="bg bg-scan"></div>
+  <div class="vid-frame"><video src="/media/scan-video.mp4" poster="/media/scan-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="3D scanning of a clay scooter model"></video></div>
+  <div class="wrap">
+    <div class="kicker r">Academy · 04</div>
+    <h2 class="r r2">Scanning</h2>
+    <div class="cols r r3">
+      <div><p>Bridge the physical and digital. Capture clay models and parts in 3D, clean the data and bring it back into the design loop.</p></div>
+      <ul class="points"><li><span>—</span>3D scanning workflow</li><li><span>—</span>Point cloud &amp; mesh cleanup</li><li><span>—</span>Clay-to-digital loop</li><li><span>—</span>Reverse engineering basics</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="prototype" class="tone with-photo with-art">
+  <div class="bg bg-proto"></div>
+  <div class="side-art"><img src="/media/prototype-art.jpg" alt="Hand-built roadster prototype with students"></div>
+  <div class="wrap">
+    <div class="kicker r">Academy · 05</div>
+    <h2 class="r r2">Prototype —<br><span style="white-space:nowrap">Show &amp; Working</span></h2>
+    <div class="cols r r3">
+      <div><p>See how a design becomes a real object. Learn hard modelling, tooling, FRP and fabrication for <strong>show prototypes</strong>, and how they evolve into <strong>working, running prototypes</strong>.</p></div>
+      <ul class="points"><li><span>—</span>Hard modelling &amp; tooling</li><li><span>—</span>FRP &amp; finishing</li><li><span>—</span>Show prototype build</li><li><span>—</span>Working prototype build</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ENROLL -->
+<section id="enroll" class="tone">
+  <div class="bg bg-enroll"></div>
+  <div class="wrap">
+    <div class="kicker r">Academy · Enroll</div>
+    <h2 class="r r2">Master Classes<br>Season 01</h2>
+    <p class="lead r r3">Take a real two-wheeler — the Oneaxi Scooter — from concept to prototype, guided by industry-hardened designers from 2NOMADS and Classic Legend. Open to designers, engineers, freshers, seniors and anyone passionate about motorcycle design.</p>
+
+    <div class="enroll-grid r r3">
+      <div class="e-card">
+        <h4>Class Timings</h4>
+        <table class="times">
+          <tr><td>Monday – Friday</td><td>6:30 PM – 10:00 PM</td></tr>
+          <tr><td>Sunday</td><td>11:00 AM – 8:00 PM</td></tr>
+          <tr class="off"><td>Saturday</td><td>Closed</td></tr>
+        </table>
+        <p class="note">Evening batches, so you never miss college or work.</p>
+      </div>
+
+      <div class="e-card">
+        <h4>Course Details</h4>
+        <dl class="facts">
+          <dt>Mode</dt><dd>Offline, hands-on</dd>
+          <dt>Venue</dt><dd>2NOMADS Studio, Bhosari, Pune</dd>
+          <dt>Faculty</dt><dd>2NOMADS designers &amp; engineers, with Akhilesh Manchandani and Aravind Kumar (Classic Legend)</dd>
+          <dt>Partners</dt><dd>Electro Pneumatic (industry) · Spicer Adventist University (education)</dd>
+          <dt>Fees</dt><dd>Contact for details</dd>
+        </dl>
+      </div>
+
+      <!-- ADMISSIONS & APPLICATION CTA CARD -->
+      <div class="e-card e-admissions-card">
+        <h4>Admissions · Season 01</h4>
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 77, 28, 0.15); border: 1px solid rgba(255, 77, 28, 0.35); padding: 5px 12px; border-radius: 9999px; margin-bottom: 14px;">
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: #22c55e;"></span>
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #ff4d1c;">Applications Open</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--muted); margin-bottom: 18px;">
+          Seats are strictly limited to maintain individual mentoring on physical studio benches and 1:1 scale clay armatures.
+        </p>
+
+        <ul style="list-style: none; padding: 0; margin: 0 0 24px; font-size: 13.5px; color: #e4e4e7; line-height: 1.8;">
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: var(--accent); font-weight: bold;">✓</span> 16-Week Intensive Studio Program
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: var(--accent); font-weight: bold;">✓</span> Direct mentorship from senior OEM designers
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: var(--accent); font-weight: bold;">✓</span> Real project: Oneaxi EV Scooter build
+          </li>
+        </ul>
+
+        <a routerLink="/register" class="btn" style="width: 100%; justify-content: center; background: var(--accent); color: #fff; padding: 16px 20px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 9999px; box-shadow: 0 8px 24px rgba(255, 77, 28, 0.4); display: flex; align-items: center; gap: 8px; transition: all 0.25s;">
+          <span>Apply &amp; Register Online →</span>
+        </a>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 18px; font-size: 11.5px; color: var(--muted);">
+          <a href="https://wa.me/919158228037?text=Hello%202NOMADS!%20I%20would%20like%20to%20enquire%20about%20Season%2001%20admissions." target="_blank" rel="noopener" style="color: #22c55e; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 500;">
+            💬 WhatsApp Desk
+          </a>
+          <span>Hotline: <a href="tel:+919158228037" style="color: var(--accent); text-decoration: none;">+91 91582 28037</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO OVERVIEW -->
+<section id="studio" class="tone">
+  <div class="bg bg-studio"></div><span class="ph">Studio wide shot</span>
+  <div class="wrap">
+    <div class="kicker r">Studio</div>
+    <h2 class="r r2">Design services<br>for OEMs.</h2>
+    <p class="lead r r3">From clay to running prototype — trusted by brands including Classic Legend, Pluto Mobility and Hindustan Motors.</p>
+    <div class="cards r r3">
+      <a href="#clay-service"><b>01</b><em>Clay Service</em></a>
+      <a href="#prototype-service"><b>02</b><em>Prototype Service</em></a>
+    </div>
+  </div>
+</section>
+
+<section id="clay-service" class="tone">
+  <div class="bg bg-sclay"></div><span class="ph">OEM clay model photo</span>
+  <div class="wrap">
+    <div class="kicker r">Studio · 01</div>
+    <h2 class="r r2">Clay<br>Service</h2>
+    <div class="cols r r3">
+      <div><p>Scale and full-size clay models for two-wheelers, cars and concepts. We take your design through clay, correct it surface by surface under proper studio lighting, and hand back a model ready for review or scanning.</p></div>
+      <ul class="points"><li><span>—</span>Scale &amp; 1:1 clay models</li><li><span>—</span>Design correction in clay</li><li><span>—</span>Scanning &amp; data handover</li><li><span>—</span>Presentation-ready finish</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="prototype-service" class="tone">
+  <div class="bg bg-sproto"></div><span class="ph">Finished prototype photo</span>
+  <div class="wrap">
+    <div class="kicker r">Studio · 02</div>
+    <h2 class="r r2">Prototype<br>Service</h2>
+    <div class="cols r r3">
+      <div><p><strong>Show prototypes</strong> for launches and auto expos, and <strong>working prototypes</strong> that actually run — from a Jawa 42 build and the Jawa/BSA Bobber for Classic Legend to a three-wheel delivery concept for Pluto Mobility.</p></div>
+      <ul class="points"><li><span>—</span>Show / display prototypes</li><li><span>—</span>Working running prototypes</li><li><span>—</span>Metal fabrication &amp; FRP</li><li><span>—</span>EV &amp; ICE platforms</li></ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- GALLERY SECTION -->
+<section id="gallery" class="tone gallery-section">
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="kicker r">Portfolio &amp; Life · Studio &amp; Work</div>
+    <h2 class="r r2">Behind the form.<br>Inside the craft.</h2>
+    <p class="lead r r3">From raw automotive styling clay and precision coordinate measurement to functional prototypes and design studio life in Pune.</p>
+
+    <!-- CINEMATIC SCROLL MOTION SHOWCASE RAIL (Inspired by animmasterlib.dev/scroll) -->
+    <div class="gallery-motion-reel-wrapper r r3">
+      <div class="g-reel-header">
+        <div class="g-reel-title-group">
+          <div class="g-reel-badge">
+            <span class="g-reel-dot"></span>
+            <span>SCROLL MOTION REEL · FLAGSHIP BUILDS</span>
+          </div>
+          <h3 class="g-reel-heading">Curated Motion Showcase</h3>
+          <p class="g-reel-sub">Swipe, scrub, or drag horizontally through international motor show premieres, raw clay surfacing, and vehicle prototypes.</p>
+        </div>
+        <div class="g-reel-controls">
+          <div class="g-reel-scroll-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span>Scroll &amp; Drag</span>
+          </div>
+          <button type="button" class="g-reel-nav-btn prev" id="gReelPrev" aria-label="Previous showcase card">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="g-reel-nav-btn next" id="gReelNext" aria-label="Next showcase card">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Horizontal Scroll Track with Parallax Cards -->
+      <div class="g-reel-track-container" id="gReelTrackContainer" tabindex="0" role="region" aria-label="Horizontal scroll motion showcase">
+        <div class="g-reel-track" id="gReelTrack">
+
+          <!-- Reel Item 1: Video Reel -->
+          <article class="g-reel-card is-video-card" data-category="work" data-tags="work prototype reels" data-media-type="video" data-video-src="images/gallery/bsa-bobber-showcase.mp4" tabindex="0" role="button" aria-label="Play BSA Bobber 350 Show Prototype reel video in full screen">
+            <div class="g-reel-card-inner">
+              <img class="g-reel-img" src="images/gallery/bsa-bobber-350-show.jpg" alt="BSA Bobber 350 Show Prototype preview poster" loading="lazy">
+              <video class="g-reel-video" src="images/gallery/bsa-bobber-showcase.mp4" muted loop playsinline preload="metadata"></video>
+              <div class="g-reel-video-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>8s Reel Video</span>
+              </div>
+              <div class="g-reel-card-overlay">
+                <span class="g-reel-tag">SHOWCASE · VIDEO REEL</span>
+                <h4 class="g-reel-card-title">BSA Bobber 350 — Show Premiere</h4>
+                <p class="g-reel-card-desc">Bespoke running prototype built for Classic Legend with gold inverted forks, hand-sculpted tank, and Union Jack side covers.</p>
+                <div class="g-reel-fullscreen-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                  <span>Play Fullscreen Reel</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reel Item 2: Lykan HyperSport Rear Smoke -->
+          <article class="g-reel-card" data-category="work" data-tags="work prototype hypercar" tabindex="0" role="button" aria-label="View Lykan HyperSport Wind-Tunnel Smoke Reveal in full screen">
+            <div class="g-reel-card-inner">
+              <img class="g-reel-img" src="images/gallery/lykan-hypersport-rear-smoke.jpg" alt="W Motors Lykan HyperSport in wind-tunnel smoke" loading="lazy">
+              <div class="g-reel-card-overlay">
+                <span class="g-reel-tag">HYPERCAR · HERITAGE</span>
+                <h4 class="g-reel-card-title">Lykan HyperSport — Smoke Reveal</h4>
+                <p class="g-reel-card-desc">Atmospheric reveal of the W Motors Lykan HyperSport rear architecture, sculpted aero blades, and carbon diffuser.</p>
+                <div class="g-reel-fullscreen-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                  <span>View Fullscreen</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reel Item 3: Kapil Dev Automotive Clay Review -->
+          <article class="g-reel-card" data-category="studio" data-tags="studio clay milestone" tabindex="0" role="button" aria-label="View Automotive Clay Review with Kapil Dev in full screen">
+            <div class="g-reel-card-inner">
+              <img class="g-reel-img" src="images/gallery/kapil-dev-clay-car-review.jpg" alt="Kapil Dev and automobile designers inspecting clay car model" loading="lazy">
+              <div class="g-reel-card-overlay">
+                <span class="g-reel-tag">HISTORIC · STUDIO MOMENT</span>
+                <h4 class="g-reel-card-title">Clay Car Review with Kapil Dev</h4>
+                <p class="g-reel-card-desc">Legendary cricket icon Kapil Dev with automotive styling directors inspecting a physical clay passenger car model.</p>
+                <div class="g-reel-fullscreen-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                  <span>View Fullscreen</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reel Item 4: Oneaxi EV Scooter -->
+          <article class="g-reel-card" data-category="work" data-tags="work prototype ev" tabindex="0" role="button" aria-label="View Oneaxi EV Scooter Concept in full screen">
+            <div class="g-reel-card-inner">
+              <img class="g-reel-img" src="images/gallery/oneaxi-electric-scooter-studio.jpg" alt="Oneaxi electric scooter studio prototype with rider" loading="lazy">
+              <div class="g-reel-card-overlay">
+                <span class="g-reel-tag">EV PROTO · ONEAXI</span>
+                <h4 class="g-reel-card-title">Oneaxi EV Scooter — Studio Prototype</h4>
+                <p class="g-reel-card-desc">In-house electric maxi-scooter with crimson sculpted fascia, exposed trellis subframe, and cantilever monoshock.</p>
+                <div class="g-reel-fullscreen-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                  <span>View Fullscreen</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reel Item 5: Founder R Donshong Koren with Custom JAWA 42 -->
+          <article class="g-reel-card" data-category="studio" data-tags="studio leadership craft" tabindex="0" role="button" aria-label="View Founder R Donshong Koren with Custom JAWA 42 in full screen">
+            <div class="g-reel-card-inner">
+              <img class="g-reel-img" src="images/gallery/koren-jawa42-custom.jpg" alt="Founder R Donshong Koren standing with JAWA 42 custom motorcycle" loading="lazy">
+              <div class="g-reel-card-overlay">
+                <span class="g-reel-tag">LEADERSHIP · CRAFT</span>
+                <h4 class="g-reel-card-title">Founder R Donshong Koren &amp; JAWA 42</h4>
+                <p class="g-reel-card-desc">Hands-on design leadership: founder with the military-themed custom JAWA 42 project at the BSA / JAWA pavilion.</p>
+                <div class="g-reel-fullscreen-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                  <span>View Fullscreen</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reel Item 6: 1:1 Shelby Cobra 427 -->
+          <article class="g-reel-card" data-category="work" data-tags="work prototype classic" tabindex="0" role="button" aria-label="View 1:1 Shelby Cobra 427 Physical Build in full screen">
+            <div class="g-reel-card-inner">
+              <img class="g-reel-img" src="images/gallery/shelby-cobra-427-making.jpg" alt="1:1 Shelby Cobra 427 physical roadster build in studio" loading="lazy">
+              <div class="g-reel-card-overlay">
+                <span class="g-reel-tag">CLASSIC · 1:1 BUILD</span>
+                <h4 class="g-reel-card-title">1:1 Shelby Cobra 427 — Physical Build</h4>
+                <p class="g-reel-card-desc">Full-scale physical build of the legendary Cobra 427 roadster in metallic blue with Le Mans racing stripes.</p>
+                <div class="g-reel-fullscreen-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                  <span>View Fullscreen</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reel Item 7: Motorcycle Clay on Coordinate Table -->
+          <article class="g-reel-card" data-category="clay" data-tags="work clay craft" tabindex="0" role="button" aria-label="View Direct Clay Application & Coordinate Surface Grid in full screen">
+            <div class="g-reel-card-inner">
+              <img class="g-reel-img" src="images/gallery/clay-bike-surfacing-grid.jpg" alt="Chassis on coordinate table with raw clay sculpting" loading="lazy">
+              <div class="g-reel-card-overlay">
+                <span class="g-reel-tag">RAW CRAFT · CLAY LAB</span>
+                <h4 class="g-reel-card-title">Direct Clay Application &amp; Surface Grid</h4>
+                <p class="g-reel-card-desc">Chassis mounted on coordinate table with hand-sculpted industrial clay saddle, tank, and fresh clay shavings.</p>
+                <div class="g-reel-fullscreen-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                  <span>View Fullscreen</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reel Item 8: BSA Tank & 1903 Engine Detail -->
+          <article class="g-reel-card" data-category="work" data-tags="work prototype bsa" tabindex="0" role="button" aria-label="View BSA Bobber Sculpted Tank & Engine Detail in full screen">
+            <div class="g-reel-card-inner">
+              <img class="g-reel-img" src="images/gallery/bsa-tank-engine-detail.jpg" alt="Sculpted BSA fuel tank and 1903 heritage engine" loading="lazy">
+              <div class="g-reel-card-overlay">
+                <span class="g-reel-tag">CRAFT · ENGINE DETAIL</span>
+                <h4 class="g-reel-card-title">BSA Bobber — Sculpted Tank &amp; Engine</h4>
+                <p class="g-reel-card-desc">Mirror-gloss fuel tank with heritage gold BSA insignia and knee indents flowing into the blacked-out 1903 engine casing.</p>
+                <div class="g-reel-fullscreen-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                  <span>View Fullscreen</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Scroll Scrub Progress Bar -->
+      <div class="g-reel-progress-wrap" aria-hidden="true">
+        <div class="g-reel-progress-bar" id="gReelProgressBar" style="width: 12.5%;"></div>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="gallery-controls r r3">
+      <div class="gallery-filters" role="tablist" aria-label="Gallery category filters">
+        <button type="button" class="g-filter-btn active" data-filter="all" role="tab" aria-selected="true">
+          <span class="g-filter-text">All Archive</span>
+          <span class="g-filter-count" id="countAll">70</span>
+        </button>
+        <button type="button" class="g-filter-btn" data-filter="work" role="tab" aria-selected="false">
+          <span class="g-filter-text">Show Builds &amp; Prototypes</span>
+          <span class="g-filter-count" id="countWork">42</span>
+        </button>
+        <button type="button" class="g-filter-btn" data-filter="clay" role="tab" aria-selected="false">
+          <span class="g-filter-text">Clay Craft &amp; Surfacing</span>
+          <span class="g-filter-count" id="countClay">18</span>
+        </button>
+        <button type="button" class="g-filter-btn" data-filter="studio" role="tab" aria-selected="false">
+          <span class="g-filter-text">Studio &amp; Tooling</span>
+          <span class="g-filter-count" id="countStudio">28</span>
+        </button>
+        <button type="button" class="g-filter-btn" data-filter="reels" role="tab" aria-selected="false">
+          <span class="g-filter-text">Reels</span>
+          <span class="g-filter-count" id="countReels">1</span>
+        </button>
+      </div>
+      <div class="gallery-meta-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+        <span>Click any photo / video for Fullscreen</span>
+        <span class="hint-bullet">•</span>
+        <span>Keyboard: [F] [←] [→] [Z] [ESC]</span>
+      </div>
+    </div>
+
+    <!-- Responsive Bento / Masonry Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- New Showpiece 1: BSA Bobber 350 Video Reel (Featured span-2) -->
+      <article class="gallery-card span-2-col is-video-card" data-category="work" data-tags="work prototype reels" data-media-type="video" data-video-src="images/gallery/bsa-bobber-showcase.mp4" tabindex="0" role="button" aria-label="Play BSA Bobber 350 Show Prototype reel video in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">BSA Bobber 350 Video Reel</div>
+          <img src="images/gallery/bsa-bobber-350-show.jpg" alt="BSA Bobber 350 Show Prototype preview poster" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-video-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>8s 2K Reel</span>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Video Reel</span>
+            <h3 class="gallery-card-title">BSA Bobber 350 — Show Prototype &amp; Reel</h3>
+            <p class="gallery-card-desc">Cinematic pan across the bespoke BSA Bobber 350 show prototype: hand-sculpted panels, inverted gold forks, custom exhaust, and gold pin-striped tail.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true" title="Play Fullscreen Video">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 2: Founder R Donshong Koren with Custom JAWA 42 -->
+      <article class="gallery-card" data-category="studio" data-tags="studio leadership craft" tabindex="0" role="button" aria-label="View Founder R Donshong Koren with Custom JAWA 42 in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Founder R Donshong Koren</div>
+          <img src="images/gallery/koren-jawa42-custom.jpg" alt="Founder R Donshong Koren standing with JAWA 42 custom motorcycle" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Leadership</span>
+            <h3 class="gallery-card-title">Founder R Donshong Koren &amp; JAWA 42</h3>
+            <p class="gallery-card-desc">Automobile designer and founder R Donshong Koren with the bespoke matte military green JAWA 42 build at the BSA / JAWA pavilion.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 3: Lykan HyperSport Smoke Reveal (Featured span-2) -->
+      <article class="gallery-card span-2-col" data-category="work" data-tags="work prototype hypercar" tabindex="0" role="button" aria-label="View Lykan HyperSport Wind-Tunnel Smoke Reveal in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Lykan HyperSport Smoke Reveal</div>
+          <img src="images/gallery/lykan-hypersport-rear-smoke.jpg" alt="W Motors Lykan HyperSport in wind-tunnel smoke" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Hypercar Heritage</span>
+            <h3 class="gallery-card-title">Lykan HyperSport — Smoke Reveal</h3>
+            <p class="gallery-card-desc">Atmospheric rear view of the W Motors Lykan HyperSport hypercar with glowing taillights and functional carbon aero diffuser.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 4: Automotive Clay Review with Kapil Dev -->
+      <article class="gallery-card" data-category="studio" data-tags="studio clay milestone" tabindex="0" role="button" aria-label="View Automotive Clay Review with Kapil Dev in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Review with Kapil Dev</div>
+          <img src="images/gallery/kapil-dev-clay-car-review.jpg" alt="Kapil Dev and automobile designers inspecting clay car model" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Milestone</span>
+            <h3 class="gallery-card-title">Automotive Clay Review with Kapil Dev</h3>
+            <p class="gallery-card-desc">Legendary Indian cricket captain Kapil Dev joining automobile styling directors to inspect a physical clay passenger car model on the coordinate inspection bench.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 5: Oneaxi EV Scooter -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype ev" tabindex="0" role="button" aria-label="View Oneaxi EV Scooter Studio Concept in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Oneaxi EV Scooter Concept</div>
+          <img src="images/gallery/oneaxi-electric-scooter-studio.jpg" alt="Oneaxi electric scooter studio prototype with rider" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · EV Prototype</span>
+            <h3 class="gallery-card-title">Oneaxi EV Scooter — Studio Prototype</h3>
+            <p class="gallery-card-desc">2NOMADS in-house electric maxi-scooter prototype: sculpted crimson aerodynamic front fairing, exposed trellis subframe, and cantilever monoshock.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 6: 1:1 Shelby Cobra 427 -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype classic" tabindex="0" role="button" aria-label="View 1:1 Shelby Cobra 427 Physical Build in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">1:1 Shelby Cobra 427</div>
+          <img src="images/gallery/shelby-cobra-427-making.jpg" alt="1:1 Shelby Cobra 427 physical roadster build in studio" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · 1:1 Physical Build</span>
+            <h3 class="gallery-card-title">1:1 Shelby Cobra 427 — Physical Build</h3>
+            <p class="gallery-card-desc">High-angle studio study of the 1:1 scale Shelby Cobra 427 roadster in metallic Guardsman Blue with Le Mans twin racing stripes.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 7: Direct Clay Application & Coordinate Surface Grid -->
+      <article class="gallery-card" data-category="clay" data-tags="work clay craft" tabindex="0" role="button" aria-label="View Direct Clay Application & Coordinate Surface Grid in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Direct Clay on Coordinate Grid</div>
+          <img src="images/gallery/clay-bike-surfacing-grid.jpg" alt="Chassis on coordinate table with raw clay sculpting" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Clay · Coordinate Table</span>
+            <h3 class="gallery-card-title">Direct Clay Application &amp; Surface Grid</h3>
+            <p class="gallery-card-desc">Full motorcycle chassis mounted on precision coordinate grid table, with hand-sculpted industrial clay saddle and side panels surrounded by fresh clay shavings.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 8: BSA Tank & 1903 Heritage Engine -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype bsa" tabindex="0" role="button" aria-label="View BSA Bobber Sculpted Tank & Engine Detail in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">BSA Tank & 1903 Engine</div>
+          <img src="images/gallery/bsa-tank-engine-detail.jpg" alt="Sculpted BSA fuel tank and 1903 heritage engine" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Engine Detail</span>
+            <h3 class="gallery-card-title">BSA Bobber — Sculpted Tank &amp; Engine</h3>
+            <p class="gallery-card-desc">Mirror-gloss fuel tank with heritage gold BSA insignia and knee indents flowing into the blacked-out 1903 engine casing.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 9: BSA Bobber Union Jack Side Cover -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype bsa" tabindex="0" role="button" aria-label="View BSA Bobber Union Jack Side Cover in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">BSA Union Jack Side Cover</div>
+          <img src="images/gallery/bsa-bobber-sidebox-detail.jpg" alt="BSA Bobber 350 side box with Union Jack badge" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Component Craft</span>
+            <h3 class="gallery-card-title">BSA Bobber — Union Jack Side Cover</h3>
+            <p class="gallery-card-desc">Bespoke sculpted side panel with gloss Union Jack graphic badge, integrated key tumbler, and gold link chain drive.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 10: BSA Bobber Cantilevered Saddle & Tail -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype bsa" tabindex="0" role="button" aria-label="View BSA Bobber Cantilevered Saddle & Tail in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">BSA Cantilevered Saddle</div>
+          <img src="images/gallery/bsa-bobber-saddle-tail.jpg" alt="BSA Bobber cantilevered leather saddle and rear fender" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Bespoke Leather</span>
+            <h3 class="gallery-card-title">BSA Bobber — Cantilevered Saddle</h3>
+            <p class="gallery-card-desc">Diamond-quilted alcantara and leather single seat floating over internal monoshock, with gold twin pinstripe rear fender contour.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 11: JAWA 42 Custom Profile -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype jawa" tabindex="0" role="button" aria-label="View JAWA 42 Custom Military Profile in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">JAWA 42 Custom Profile</div>
+          <img src="images/gallery/jawa42-custom-profile.jpg" alt="JAWA 42 custom motorcycle military theme profile" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Custom Build</span>
+            <h3 class="gallery-card-title">JAWA 42 Custom — 1929 Military Profile</h3>
+            <p class="gallery-card-desc">Complete side profile of custom JAWA 42: matte army green tank with cream rally stripe, 1929 insignia, blacked-out exhausts, and custom cafe bars.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 12: JAWA 42 Custom Three-Quarter -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype jawa" tabindex="0" role="button" aria-label="View JAWA 42 Custom Three-Quarter Stance in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">JAWA 42 Three-Quarter</div>
+          <img src="images/gallery/jawa42-custom-threequarter.jpg" alt="JAWA 42 custom motorcycle three-quarter stance" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Custom Build</span>
+            <h3 class="gallery-card-title">JAWA 42 Custom — Three-Quarter Stance</h3>
+            <p class="gallery-card-desc">High-angle stance of the JAWA 42 custom project, highlighting the sculpted teardrop tank, low-profile seat, and custom rear fender treatment.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 13: JAWA 42 Custom Rear Stance -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype jawa" tabindex="0" role="button" aria-label="View JAWA 42 Custom Bobbed Tail in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">JAWA 42 Bobbed Tail</div>
+          <img src="images/gallery/jawa42-custom-rear.jpg" alt="JAWA 42 custom bobbed tail and rear tire" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Rear Packaging</span>
+            <h3 class="gallery-card-title">JAWA 42 Custom — Bobbed Tail</h3>
+            <p class="gallery-card-desc">Rear packaging and shortened bobber tail cowl with integrated LED taillight and AVL custom exhaust canister outside the showroom.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 14: Clay Saddle & Side Cover Craft -->
+      <article class="gallery-card" data-category="clay" data-tags="work clay craft" tabindex="0" role="button" aria-label="View Clay Saddle & Side Cover Hand Surfacing in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Saddle & Side Cover</div>
+          <img src="images/gallery/clay-saddle-sidepanel-craft.jpg" alt="Automotive clay saddle and side cover hand surfacing" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Clay · Hand Surfacing</span>
+            <h3 class="gallery-card-title">Clay Saddle &amp; Side Cover — Hand Surfacing</h3>
+            <p class="gallery-card-desc">Close-up view of warm automotive styling clay sculpted directly onto donor frame, proving volume, edge radius, and clearance before scanning.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 15: Clay Sculpt to Blueprint Transfer -->
+      <article class="gallery-card" data-category="clay" data-tags="work clay blueprint" tabindex="0" role="button" aria-label="View Clay Sculpt to Tape Blueprint Line Transfer in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay to Blueprint Transfer</div>
+          <img src="images/gallery/clay-bike-full-tape-blueprint.jpg" alt="Motorcycle clay model aligned with tape blueprint" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Clay · Package Transfer</span>
+            <h3 class="gallery-card-title">Clay Sculpt to Tape Blueprint</h3>
+            <p class="gallery-card-desc">Motorcycle styling buck with complete clay fuel tank, seat, and fenders aligned against full-size orthographic blueprint tape drawing.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 16: Clay Modelling Stage 1 -->
+      <article class="gallery-card" data-category="clay" data-tags="work clay process" tabindex="0" role="button" aria-label="View Clay Modelling Initial Rough Block-Out in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Block-Out Stage 1</div>
+          <img src="images/gallery/clay-bike-surfacing-stage-1.jpg" alt="Clay modelling rough block out on motorcycle armature" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Clay · Block-Out</span>
+            <h3 class="gallery-card-title">Clay Modelling — Initial Block-Out</h3>
+            <p class="gallery-card-desc">Primary volume block-out phase: laying hot clay ribbons onto the armature, checking stance against package drawings on the studio wall.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 17: Clay Modelling Stage 2 Scraper Pass -->
+      <article class="gallery-card" data-category="clay" data-tags="work clay process" tabindex="0" role="button" aria-label="View Clay Modelling Surface Scraper Pass in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Scraper Pass Stage 2</div>
+          <img src="images/gallery/clay-bike-surfacing-stage-2.jpg" alt="Clay surface scraper pass on motorcycle tank and side panels" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Clay · Scraper Pass</span>
+            <h3 class="gallery-card-title">Clay Modelling — Surface Scraper Pass</h3>
+            <p class="gallery-card-desc">Refining side covers and tank shoulder with spring-steel curved scrapers, removing high spots to achieve uniform curvature.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 18: Clay Modelling Stage 3 Edge Radii -->
+      <article class="gallery-card" data-category="clay" data-tags="work clay process" tabindex="0" role="button" aria-label="View Clay Modelling Tightening Edge Radii in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Finish Stage 3</div>
+          <img src="images/gallery/clay-bike-surfacing-stage-3.jpg" alt="Finishing clay surface and edge radii on motorcycle buck" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Clay · Edge Radii</span>
+            <h3 class="gallery-card-title">Clay Modelling — Tightening Edge Radii</h3>
+            <p class="gallery-card-desc">Final hand-finishing pass with warmed slickers and micro-scrapers, readying the buck for optical 3D coordinate scanning.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 19: Lykan HyperSport Front DRL -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype hypercar" tabindex="0" role="button" aria-label="View Lykan HyperSport Titanium LED DRL Signature in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Lykan Front DRL</div>
+          <img src="images/gallery/lykan-hypersport-front-drl.jpg" alt="Lykan HyperSport front fascia and illuminated LED DRL lights" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Hypercar Fascia</span>
+            <h3 class="gallery-card-title">Lykan HyperSport — Titanium DRL</h3>
+            <p class="gallery-card-desc">Dramatic low-key studio lighting of the W Motors Lykan HyperSport hypercar front fascia, highlighting diamond-encrusted LED headlights.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- New Showpiece 20: Aerodynamic Fairing Buck on Jig -->
+      <article class="gallery-card" data-category="work" data-tags="work prototype aero" tabindex="0" role="button" aria-label="View Aerodynamic Fairing Buck on Jig in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Aerodynamic Fairing Buck</div>
+          <img src="images/gallery/motorcycle-aero-buck-jig.jpg" alt="White motorcycle front aerodynamic fairing buck on testing jig" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Aero Testing</span>
+            <h3 class="gallery-card-title">Aerodynamic Fairing Buck &amp; Fork Jig</h3>
+            <p class="gallery-card-desc">White aerodynamic front cowl and fairing volume mounted on testing turntable jig, used for tunnel flow verification and rider tuck ergonomics.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 1: Work (Featured span-2) -->
+      <article class="gallery-card span-2-col" data-category="work" tabindex="0" role="button" aria-label="View Custom BSA Bobber Show Prototype in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">BSA Bobber Show Prototype</div>
+          <img src="images/gallery/work-01.jpg" alt="Custom BSA Bobber motorcycle show prototype built by 2NOMADS" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Prototype</span>
+            <h3 class="gallery-card-title">Custom BSA Bobber Show Prototype</h3>
+            <p class="gallery-card-desc">Full custom-built running prototype developed for Classic Legend, featuring bespoke hand-sculpted panels and Union Jack graphics.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 2: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Pune Design Studio & Work Bay in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Pune Design Studio</div>
+          <img src="images/gallery/studio-01.jpg" alt="2NOMADS studio interior and vehicle design bay in Bhosari Pune" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Facility</span>
+            <h3 class="gallery-card-title">Pune Design Studio &amp; Work Bay</h3>
+            <p class="gallery-card-desc">Full-spectrum studio floor featuring ideation pin-up walls, styling bays, and vehicle development area in Bhosari, Pune.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 3: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Chassis Clay Surfacing & Proportion Model in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Chassis Clay Surfacing</div>
+          <img src="images/gallery/work-02.jpg" alt="In-progress clay surfacing directly on motorcycle chassis" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Modelling</span>
+            <h3 class="gallery-card-title">Chassis Clay Surfacing &amp; Ergonomics</h3>
+            <p class="gallery-card-desc">Direct clay application on donor motorcycle frame, matching tape-line package drawings to the functional rider triangle.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 4: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Digital Sculpting Workstation in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Digital Sculpting Station</div>
+          <img src="images/gallery/studio-02.jpg" alt="Dual-screen CAD modeling desk with Wacom Cintiq drawing tablet" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Digital Lab</span>
+            <h3 class="gallery-card-title">Digital Sculpting Workstation</h3>
+            <p class="gallery-card-desc">Dual-display CAD modeling station equipped with Wacom pen display, reference optics, and surface development software.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 5: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Oneaxi EV Scooter Physical Clay Model in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Oneaxi EV Scooter Model</div>
+          <img src="images/gallery/work-03.jpg" alt="Oneaxi electric scooter scale clay model on coordinate surface table" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · EV Clay Model</span>
+            <h3 class="gallery-card-title">Oneaxi EV Scooter — Physical Clay</h3>
+            <p class="gallery-card-desc">Scale clay model for in-house Oneaxi electric scooter, sculpted to OEM production tolerances with integrated aerodynamic surfacing.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 6: Studio (Featured span-2) -->
+      <article class="gallery-card span-2-col" data-category="studio" tabindex="0" role="button" aria-label="View Rapid Prototyping & 3D Lab in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Rapid Prototyping Lab</div>
+          <img src="images/gallery/studio-04.jpg" alt="Rapid prototyping lab with Bambu Lab 3D printers and vehicle sketches" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Fabrication</span>
+            <h3 class="gallery-card-title">Rapid Prototyping &amp; 3D Lab</h3>
+            <p class="gallery-card-desc">In-house additive fabrication lab with multi-filament Bambu Lab 3D printers and hydraulic adjustable styling surface table.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 7: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Orthographic CAD to Physical Clay in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Orthographic to Clay</div>
+          <img src="images/gallery/work-05.jpg" alt="Translating orthographic blueprint drawing to 3D clay model" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Translation</span>
+            <h3 class="gallery-card-title">Orthographic Projection to Clay</h3>
+            <p class="gallery-card-desc">Aligning physical clay volumes with full-scale orthographic blueprint prints on the coordinate reference board.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 8: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View INSIZE Precision Height Gauge in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">INSIZE Height Gauge</div>
+          <img src="images/gallery/studio-07.jpg" alt="INSIZE vernier height gauge coordinate measurement device" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Tooling</span>
+            <h3 class="gallery-card-title">INSIZE Precision Height Gauge</h3>
+            <p class="gallery-card-desc">Stainless steel vernier height gauge on precision coordinate grid table for millimeter-accurate symmetry and proportion verification.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 9: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Clay Surfacing & Highlight Refinement in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Surfacing Highlights</div>
+          <img src="images/gallery/work-04.jpg" alt="Hand-tool finishing and clay surface highlight reading" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Craft</span>
+            <h3 class="gallery-card-title">Surface Tension &amp; Highlight Lines</h3>
+            <p class="gallery-card-desc">Hand-tool finishing and scraper work to achieve continuous curvature and crisp reflection highlights under studio lights.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 10: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Vehicle Sketch Pin-Up & Ideation Wall in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Sketch Pin-Up Wall</div>
+          <img src="images/gallery/work-07.jpg" alt="Vehicle design sketch wall with sports car and EV concepts" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Ideation</span>
+            <h3 class="gallery-card-title">Automotive Concept Sketch Wall</h3>
+            <p class="gallery-card-desc">Exploratory design sketches covering electric hypercars, urban micro-mobility, and production motorcycle silhouettes.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 11: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Design Direction & Sketch Review in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Design Direction Review</div>
+          <img src="images/gallery/studio-03.jpg" alt="Founder R Donshong Koren reviewing sketches in 2NOMADS studio" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Leadership</span>
+            <h3 class="gallery-card-title">Design Direction &amp; Review</h3>
+            <p class="gallery-card-desc">Founder R Donshong Koren reviewing vehicle ideation sketches, styling themes, and packaging proportions.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 12: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Oneaxi Aerodynamic Fascia Sculpt in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Oneaxi Fascia Sculpt</div>
+          <img src="images/gallery/work-08.jpg" alt="Front angle clay sculpture of Oneaxi electric scooter" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · EV Surfacing</span>
+            <h3 class="gallery-card-title">Oneaxi Aerodynamic Fascia Sculpt</h3>
+            <p class="gallery-card-desc">Detailed clay study of front fascia integration, stepped footboards, and floating rear tail section.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 13: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Digital Hot Air Clay Oven in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Digital Clay Oven</div>
+          <img src="images/gallery/studio-05.jpg" alt="Digital hot air clay oven on wooden stand in workshop" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Equipment</span>
+            <h3 class="gallery-card-title">Digital Hot Air Clay Oven</h3>
+            <p class="gallery-card-desc">Dedicated digital warming oven conditioned to 55°C–60°C for automotive industrial styling clay softening.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 14: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Top-Down Plan View Sculpt in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Plan View Clay Sculpt</div>
+          <img src="images/gallery/work-06.jpg" alt="Overhead perspective of clay model on grid table" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Ergonomics</span>
+            <h3 class="gallery-card-title">Top-Down Plan View Sculpt</h3>
+            <p class="gallery-card-desc">Refining vehicle shoulder proportions, seat transition ergonomics, and aerodynamic taper from above.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 15: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Studio Showcase & Discussion Table in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Studio Showcase</div>
+          <img src="images/gallery/studio-06.jpg" alt="Conference table and automotive model archive showcase" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Review Area</span>
+            <h3 class="gallery-card-title">Studio Showcase &amp; Review Table</h3>
+            <p class="gallery-card-desc">Design discussion suite with miniature concept cars, aerodynamic buck studies, and client review table.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 16: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Open Studio Architecture in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Open Studio Architecture</div>
+          <img src="images/gallery/studio-08.jpg" alt="Warm ambient studio view with automotive styling library" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Atmosphere</span>
+            <h3 class="gallery-card-title">Open Studio Architecture</h3>
+            <p class="gallery-card-desc">Spacious open studio layout designed for viewing automotive forms under controlled ambient illumination.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 17: Work -->
+      <article class="gallery-card span-2-col" data-category="work" tabindex="0" role="button" aria-label="View Full-Size Clay — Rear Volume in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Full-Size Clay — Rear Volume</div>
+          <img src="images/gallery/work-17.jpg" alt="Full-size car clay model rear volume in the 2NOMADS studio" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Full-Size Clay</span>
+            <h3 class="gallery-card-title">Full-Size Clay — Rear Volume</h3>
+            <p class="gallery-card-desc">Full-size passenger car clay, checked under studio lighting for highlight continuity across the rear shoulder and deck.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 18: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Meeting Table &amp; Ideation Wall in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Meeting Table & Ideation Wall</div>
+          <img src="images/gallery/studio-11.jpg" alt="Meeting table and ideation wall inside the 2NOMADS studio" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Workspace</span>
+            <h3 class="gallery-card-title">Meeting Table & Ideation Wall</h3>
+            <p class="gallery-card-desc">The main meeting table under warm pendants, with the working wall and project boards behind.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 19: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Cobra Roadster — Top View in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Cobra Roadster — Top View</div>
+          <img src="images/gallery/work-24.jpg" alt="Blue roadster show prototype seen from above" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Show Prototype</span>
+            <h3 class="gallery-card-title">Cobra Roadster — Top View</h3>
+            <p class="gallery-card-desc">Roadster show prototype photographed from above, showing the hand-laid stripe work, roll hoop and body surfacing.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 20: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Studio Floor — Designers at Work in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Studio Floor — Designers at Work</div>
+          <img src="images/gallery/studio-09.jpg" alt="Designers working at workstations on the 2NOMADS studio floor" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Workspace</span>
+            <h3 class="gallery-card-title">Studio Floor — Designers at Work</h3>
+            <p class="gallery-card-desc">Designers at the workstations mid-project, with the clay bay and fabrication areas running in the background.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 21: Work -->
+      <article class="gallery-card span-2-col" data-category="work" tabindex="0" role="button" aria-label="View Bobber — Finished Show Build in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Bobber — Finished Show Build</div>
+          <img src="images/gallery/work-09.jpg" alt="Finished custom bobber motorcycle built by 2NOMADS" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Prototype</span>
+            <h3 class="gallery-card-title">Bobber — Finished Show Build</h3>
+            <p class="gallery-card-desc">Custom bobber assembled and finished in the studio, with a hand-formed tank, leather saddle and polished detailing ahead of delivery.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 22: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Motorcycle Buck — First Blocking in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Motorcycle Buck — First Blocking</div>
+          <img src="images/gallery/work-11.jpg" alt="Clay motorcycle buck in early blocking stage on the studio surface table" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Modelling</span>
+            <h3 class="gallery-card-title">Motorcycle Buck — First Blocking</h3>
+            <p class="gallery-card-desc">Clay buck built up over the armature on the surface table, blocked to the tape-line package with tools laid out ready.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 23: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Studio Hall — Track Lighting in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Studio Hall — Track Lighting</div>
+          <img src="images/gallery/studio-15.jpg" alt="Studio hall with track lighting and workstations" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Atmosphere</span>
+            <h3 class="gallery-card-title">Studio Hall — Track Lighting</h3>
+            <p class="gallery-card-desc">The main hall under track lighting, arranged so clay surfaces can be read from any angle.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 24: Work -->
+      <article class="gallery-card span-2-col" data-category="work" tabindex="0" role="button" aria-label="View Cobra Build — Team Handover in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Cobra Build — Team Handover</div>
+          <img src="images/gallery/work-25.jpg" alt="Build team standing with the finished roadster prototype" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Show Prototype</span>
+            <h3 class="gallery-card-title">Cobra Build — Team Handover</h3>
+            <p class="gallery-card-desc">The build team with the finished roadster prototype after final assembly and client sign-off.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 25: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View SUV Clay — Scale Model in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">SUV Clay — Scale Model</div>
+          <img src="images/gallery/work-19.jpg" alt="Scale SUV clay model on a surface table" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Modelling</span>
+            <h3 class="gallery-card-title">SUV Clay — Scale Model</h3>
+            <p class="gallery-card-desc">Scale SUV clay on the surface table, developed from proportion sketches into a readable, buildable volume.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 26: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Pin-Up Wall — Concept Sketches in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Pin-Up Wall — Concept Sketches</div>
+          <img src="images/gallery/studio-17.jpg" alt="Pin-up wall covered with concept sketches and package drawings" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Ideation</span>
+            <h3 class="gallery-card-title">Pin-Up Wall — Concept Sketches</h3>
+            <p class="gallery-card-desc">The pin-up wall in full flow: package drawings, proportion studies and reference prints at eye level.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 27: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Sculpting Desk — Live Model in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Sculpting Desk — Live Model</div>
+          <img src="images/gallery/studio-12.jpg" alt="Digital sculpting desk with a model on screen" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Digital</span>
+            <h3 class="gallery-card-title">Sculpting Desk — Live Model</h3>
+            <p class="gallery-card-desc">Digital sculpting desk with the model on screen, camera and sketch references within reach.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 28: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Full-Size Clay — Side Surface in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Full-Size Clay — Side Surface</div>
+          <img src="images/gallery/work-18.jpg" alt="Full-size clay car side surface and mirror detail" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Full-Size Clay</span>
+            <h3 class="gallery-card-title">Full-Size Clay — Side Surface</h3>
+            <p class="gallery-card-desc">Side surfaces and mirror packaging refined in full-size clay, reading reflections along the shoulder line.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 29: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Two-Wheeler Clay Study in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Two-Wheeler Clay Study</div>
+          <img src="images/gallery/work-13.jpg" alt="Side profile of a clay motorcycle study in the 2NOMADS studio" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Modelling</span>
+            <h3 class="gallery-card-title">Two-Wheeler Clay Study</h3>
+            <p class="gallery-card-desc">Clay study photographed under studio lighting to judge the side profile and the flow from tank to tail.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 30: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Marine Interior — Scale Study in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Marine Interior — Scale Study</div>
+          <img src="images/gallery/work-20.jpg" alt="Scale interior model of a leisure boat cabin" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Model Making</span>
+            <h3 class="gallery-card-title">Marine Interior — Scale Study</h3>
+            <p class="gallery-card-desc">Interior packaging study for a leisure boat, modelled at scale to test seating, sightlines and trim flow.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 31: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Studio Lounge &amp; Kitchenette in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Studio Lounge & Kitchenette</div>
+          <img src="images/gallery/studio-13.jpg" alt="Studio lounge and kitchenette corner with model shelving" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Facility</span>
+            <h3 class="gallery-card-title">Studio Lounge & Kitchenette</h3>
+            <p class="gallery-card-desc">Break-out corner with the kitchenette and shelving of models — where reviews usually end up.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 32: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Bobber Tank — Clay Study in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Bobber Tank — Clay Study</div>
+          <img src="images/gallery/work-10.jpg" alt="Motorcycle tank form developed in clay during bobber prototype work" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Study</span>
+            <h3 class="gallery-card-title">Bobber Tank — Clay Study</h3>
+            <p class="gallery-card-desc">Tank form blocked in clay and taped for proportion checks before the final metal and paint work.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 33: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Digital Hot-Air Clay Oven in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Digital Hot-Air Clay Oven</div>
+          <img src="images/gallery/studio-19.jpg" alt="Digital hot-air clay oven on its stand in the studio" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Equipment</span>
+            <h3 class="gallery-card-title">Digital Hot-Air Clay Oven</h3>
+            <p class="gallery-card-desc">Digital hot-air oven used to bring clay to working temperature before blocking and surfacing.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 34: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Scale Convertible — Form Study in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Scale Convertible — Form Study</div>
+          <img src="images/gallery/work-22.jpg" alt="Scale convertible concept model with a contrasting windscreen frame" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Concept Build</span>
+            <h3 class="gallery-card-title">Scale Convertible — Form Study</h3>
+            <p class="gallery-card-desc">Open-top scale model with a contrasting frame, used to judge windscreen rake, cockpit depth and rear deck proportion.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 35: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Dual-Screen Sculpting Station in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Dual-Screen Sculpting Station</div>
+          <img src="images/gallery/studio-16.jpg" alt="Dual-screen digital sculpting workstation" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Digital</span>
+            <h3 class="gallery-card-title">Dual-Screen Sculpting Station</h3>
+            <p class="gallery-card-desc">Two-display sculpting station with pen input, reference sketches and a camera for surface capture.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 36: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Concept Vehicle — Body Shell in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Concept Vehicle — Body Shell</div>
+          <img src="images/gallery/work-21.jpg" alt="White concept vehicle body shell under construction" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Concept Build</span>
+            <h3 class="gallery-card-title">Concept Vehicle — Body Shell</h3>
+            <p class="gallery-card-desc">White concept body shell assembled for packaging checks, wiring routes and rider ergonomics before paint.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 37: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Clay Model — Detail Stage in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Model — Detail Stage</div>
+          <img src="images/gallery/work-14.jpg" alt="Detail work on a clay motorcycle model" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Modelling</span>
+            <h3 class="gallery-card-title">Clay Model — Detail Stage</h3>
+            <p class="gallery-card-desc">Detail stage on the clay buck: seat area, rear cowl and edges refined with hand tools and a hot-air finish.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 38: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Fabrication Shop — Bench &amp; Saw in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Fabrication Shop — Bench & Saw</div>
+          <img src="images/gallery/studio-10.jpg" alt="Fabrication bench and table saw in the 2NOMADS workshop" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Fabrication</span>
+            <h3 class="gallery-card-title">Fabrication Shop — Bench & Saw</h3>
+            <p class="gallery-card-desc">The fabrication bench with the table saw set up for pattern work, backed by a full tool wall.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 39: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Cobra Roadster — Profile in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Cobra Roadster — Profile</div>
+          <img src="images/gallery/work-26.jpg" alt="Side profile of a blue roadster prototype in the display bay" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Show Prototype</span>
+            <h3 class="gallery-card-title">Cobra Roadster — Profile</h3>
+            <p class="gallery-card-desc">Side profile of the roadster prototype in the display bay, set up for review with badges and trim fitted.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 40: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Clay Buck — Surface Pass in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Buck — Surface Pass</div>
+          <img src="images/gallery/work-12.jpg" alt="Clay motorcycle model during a surfacing pass" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Modelling</span>
+            <h3 class="gallery-card-title">Clay Buck — Surface Pass</h3>
+            <p class="gallery-card-desc">Second surfacing pass on the two-wheeler buck, tightening the shoulder and tank transitions before highlight reading.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 41: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Open Floor — Workstations in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Open Floor — Workstations</div>
+          <img src="images/gallery/studio-14.jpg" alt="Open studio floor with workstations and reference shelving" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Facility</span>
+            <h3 class="gallery-card-title">Open Floor — Workstations</h3>
+            <p class="gallery-card-desc">Open studio floor with drafting desks, monitors and the reference shelf wall.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 42: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Sculpted Volume — Clay Bay in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Sculpted Volume — Clay Bay</div>
+          <img src="images/gallery/work-16.jpg" alt="Sculpted clay motorcycle volume in the clay bay" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Modelling</span>
+            <h3 class="gallery-card-title">Sculpted Volume — Clay Bay</h3>
+            <p class="gallery-card-desc">The buck on the turntable in the clay bay, with reference material pinned up behind for constant comparison.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 43: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Sketch Wall &amp; Design Desks in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Sketch Wall & Design Desks</div>
+          <img src="images/gallery/studio-18.jpg" alt="Design desks and sketch wall in the 2NOMADS studio" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Ideation</span>
+            <h3 class="gallery-card-title">Sketch Wall & Design Desks</h3>
+            <p class="gallery-card-desc">Design desks facing the sketch wall, with models and tape-line drawings kept in constant view.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 44: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Motorcycle Styling Buck in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Motorcycle Styling Buck</div>
+          <img src="images/gallery/work-23.jpg" alt="White motorcycle styling buck used for form development" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Styling Buck</span>
+            <h3 class="gallery-card-title">Motorcycle Styling Buck</h3>
+            <p class="gallery-card-desc">White styling buck for a sport motorcycle, shaped to test fairing mass, front-end attitude and rider fit.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 45: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View Height Gauge — Surface Check in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Height Gauge — Surface Check</div>
+          <img src="images/gallery/studio-21.jpg" alt="Vernier height gauge beside a clay buck on the surface table" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Measurement</span>
+            <h3 class="gallery-card-title">Height Gauge — Surface Check</h3>
+            <p class="gallery-card-desc">Vernier height gauge set up beside a clay buck for coordinate checks against the surface table.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 46: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Clay Form — Studio Review in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Form — Studio Review</div>
+          <img src="images/gallery/work-15.jpg" alt="Clay motorcycle form under review in the studio" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Modelling</span>
+            <h3 class="gallery-card-title">Clay Form — Studio Review</h3>
+            <p class="gallery-card-desc">Form review on the buck, checking surface continuity and proportions against the original sketch package.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 47: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Clay Service Bay in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Clay Service Bay</div>
+          <img src="images/gallery/work-28.jpg" alt="Clay service bay with a clay buck and hot-air oven" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Clay Service</span>
+            <h3 class="gallery-card-title">Clay Service Bay</h3>
+            <p class="gallery-card-desc">Service bay set-up with a clay buck under work lights and the hot-air oven ready for warming clay.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 48: Studio -->
+      <article class="gallery-card" data-category="studio" tabindex="0" role="button" aria-label="View 3D Print Bench — Resin &amp; FDM in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">3D Print Bench — Resin & FDM</div>
+          <img src="images/gallery/studio-20.jpg" alt="3D printers on the print bench beneath the sketch wall" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Studio · Fabrication</span>
+            <h3 class="gallery-card-title">3D Print Bench — Resin & FDM</h3>
+            <p class="gallery-card-desc">The print bench with resin and filament machines under the sketch wall, turning data into parts overnight.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 49: Work -->
+      <article class="gallery-card" data-category="work" tabindex="0" role="button" aria-label="View Student Aircraft — Outdoor Build in full screen">
+        <div class="gallery-thumb">
+          <div class="gallery-fallback">Student Aircraft — Outdoor Build</div>
+          <img src="images/gallery/work-27.jpg" alt="Academy students assembling a model aircraft outdoors" loading="lazy" onerror="this.parentElement.parentElement.classList.add('has-error')">
+          <div class="gallery-overlay">
+            <span class="gallery-pill">Work · Academy</span>
+            <h3 class="gallery-card-title">Student Aircraft — Outdoor Build</h3>
+            <p class="gallery-card-desc">Academy students assembling a lightweight model aircraft outdoors — a fast, hands-on lesson in structure, balance and teamwork.</p>
+          </div>
+          <div class="gallery-expand-btn" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Progressive loading: keeps the photo wall short and scannable -->
+    <div class="gallery-loadmore" id="galleryLoadMore">
+      <button type="button" class="gallery-more-btn" id="galleryMoreBtn" aria-controls="galleryGrid">
+        <span id="galleryMoreLabel">Show 12 more photos</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <span class="gallery-visible-count" id="galleryVisibleCount">Showing 12 of 70</span>
+    </div>
+  </div>
+</section>
+
+<!-- IMMERSIVE FULLSCREEN LIGHTBOX MODAL -->
+<div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Photo Lightbox" hidden>
+  <div class="gl-backdrop" id="glBackdrop"></div>
+  <div class="gl-shell">
+    <header class="gl-header">
+      <div class="gl-meta">
+        <span class="gl-tag" id="glTag">WORK · PROTOTYPE</span>
+        <span class="gl-counter" id="glCounter">01 / 70</span>
+      </div>
+      <div class="gl-header-actions">
+        <!-- Native Fullscreen Toggle Button -->
+        <button type="button" class="gl-action-btn" id="glFullscreenBtn" title="Toggle Fullscreen (F)" aria-label="Toggle Fullscreen">
+          <svg class="icon-expand" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          <svg class="icon-compress" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display: none;"><path d="M4 14h6m0 0v6m0-6L3 21m17-11h-6m0 0V4m0 6l7-7m-7 17v-6m0 0h6m-6 0l7 7M10 4v6m0 0H4m6 0L3 3"></path></svg>
+          <span class="gl-tooltip">Fullscreen (F)</span>
+        </button>
+        <!-- High-Res Zoom Toggle Button -->
+        <button type="button" class="gl-action-btn" id="glZoomBtn" title="Toggle Zoom (Z)" aria-label="Toggle Zoom">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+          <span class="gl-tooltip">Zoom 100% (Z)</span>
+        </button>
+        <!-- Close Button -->
+        <button type="button" class="gl-close" id="glClose" aria-label="Close lightbox (ESC)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="gl-body" id="glBody">
+      <button type="button" class="gl-nav gl-prev" id="glPrev" aria-label="Previous photo">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <div class="gl-stage" id="glStage">
+        <img class="gl-image" id="glImage" src="" alt="" draggable="false">
+        <video class="gl-video" id="glVideo" src="" controls playsinline loop style="display:none;"></video>
+      </div>
+
+      <button type="button" class="gl-nav gl-next" id="glNext" aria-label="Next photo">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    <footer class="gl-footer">
+      <div class="gl-caption">
+        <h3 class="gl-title" id="glTitle">Photo Title</h3>
+        <p class="gl-desc" id="glDesc">Photo Description</p>
+      </div>
+      <div class="gl-hints">
+        <span><kbd>←</kbd> <kbd>→</kbd> Navigate</span>
+        <span><kbd>F</kbd> Fullscreen</span>
+        <span><kbd>Z</kbd> Zoom</span>
+        <span><kbd>ESC</kbd> Close</span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- TESTIMONY -->
+<section id="testimony" class="tone light">
+  <div class="bg bg-testi"></div>
+  <div class="wrap">
+    <div class="kicker r">Testimony</div>
+    <h2 class="r r2">What they say.</h2>
+    <div class="quotes r r3">
+      <div class="quote"><p>Add a real testimonial from a student or client here — two or three sentences work best.</p><small>Name · Role, Company</small></div>
+      <div class="quote"><p>Add a real testimonial from a student or client here — two or three sentences work best.</p><small>Name · Role, Company</small></div>
+      <div class="quote"><p>Add a real testimonial from a student or client here — two or three sentences work best.</p><small>Name · Role, Company</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="tone">
+  <div class="bg bg-contact"></div>
+  <div class="wrap">
+    <div class="kicker r">Contact</div>
+    <h2 class="r r2">Let's build<br>something.</h2>
+    <div class="contact-grid r r3">
+      <div><h4>Email</h4><a href="mailto:donnykoren@gmail.com">donnykoren@gmail.com</a></div>
+      <div><h4>Phone</h4><a href="tel:+919158228037">+91 91582 28037</a></div>
+      <div><h4>Studio</h4><p>MSEI, Plot No. T-153/1<br>Bhosari, Pune 411026</p></div>
+      <div><h4>Studio Hours</h4><p>Monday – Friday<br>from 11:00 AM</p></div>
+      <div><h4>Class Timings</h4><p>Mon – Fri · 6:30 – 10:00 PM<br>Sunday · 11:00 AM – 8:00 PM</p></div>
+      <div><h4>Saturday</h4><p>Closed</p></div>
+    </div>
+
+    <!-- Direct Project Inquiry Form -->
+    <div style="margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--line); max-width: 760px;" class="r r3">
+      <app-inquiry></app-inquiry>
+    </div>
+
+    <footer style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-top: 1px solid var(--line); padding-top: 32px; margin-top: 60px;">
+      <div>© 2026 2NOMADS Transportation Design Studio &amp; Academy · VN Vidyut Pvt. Ltd.</div>
+      <div style="display: flex; gap: 20px; align-items: center;">
+        <span>Bhosari, Pune</span>
+        <a routerLink="/admin/login" class="footer-admin-link" style="background: rgba(255, 77, 28, 0.12); border: 1px solid rgba(255, 77, 28, 0.45); color: #ff4d1c; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 11.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; font-family: var(--body); letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.25s;">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          <span>Staff &amp; Admin Login →</span>
+        </a>
+      </div>
+    </footer>
+  </div>
+</section>
+
+</main>
