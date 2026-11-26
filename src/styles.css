@@ -644,7 +644,7 @@ header#hdr a.logo {
     min-height: 200px !important;
     max-height: 280px !important;
     margin: 20px auto 0 !important;
-    border-radius: 16px !important;
+    border-radius: 8px !important;
     overflow: hidden !important;
     transform: none !important;
   }
@@ -654,7 +654,7 @@ header#hdr a.logo {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    border-radius: 16px !important;
+    border-radius: 8px !important;
   }
 
   /* TESTIMONIALS on mobile: readable single-column cards */
@@ -1731,6 +1731,32 @@ header#hdr a.logo {
   .hero-indicator-btn.active .hero-ind-bar {
     width: 34px;
   }
+}
+
+/* Sleek, precision engineered card and media border radii across the entire site (subtle 8px edges) */
+.with-art .side-art,
+#academy .side-art,
+#clay-modelling .side-art,
+#prototype .side-art,
+.with-photo .side-photo,
+.vid-frame,
+.gallery-card,
+.g-reel-card,
+.accordion-card,
+.gl-stage img {
+  border-radius: 8px !important;
+}
+
+.with-art .side-art img,
+#academy .side-art img,
+#clay-modelling .side-art img,
+#prototype .side-art img,
+.vid-frame video,
+.gallery-thumb img,
+.gallery-thumb,
+.g-reel-card-inner,
+.g-reel-img {
+  border-radius: 8px !important;
 }
 
 

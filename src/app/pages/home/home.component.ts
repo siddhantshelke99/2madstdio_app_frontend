@@ -203,7 +203,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     let activeIndex = 0;
     let isZoomed = false;
 
-    const PAGE_SIZE = 12;
+    const PAGE_SIZE = 24;
     let visibleLimit = PAGE_SIZE;
     const loadMoreWrap = document.getElementById('galleryLoadMore');
     const moreBtn = document.getElementById('galleryMoreBtn') as HTMLButtonElement;

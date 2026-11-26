@@ -316,7 +316,7 @@ export interface AccordionItem {
       flex: 1 1 0%;
       height: 100% !important;
       min-width: 0;
-      border-radius: 20px;
+      border-radius: 8px;
       overflow: hidden;
       cursor: pointer;
       isolation: isolate;
@@ -539,7 +539,7 @@ export interface AccordionItem {
       padding: 16px 20px;
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 12px;
+      border-radius: 8px;
     }
     .nav-info {
       font-size: 13px;
@@ -773,7 +773,7 @@ export interface AccordionItem {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 8px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
       user-select: none;
     }
@@ -1010,6 +1010,114 @@ export class GalleryComponent implements OnInit, OnDestroy {
       credit: 'Bespoke Upholstery',
       image: '/media/gallery/bsa-bobber-saddle-tail.jpg',
       category: 'Detail Craft',
+    },
+    {
+      id: 's19',
+      title: '1:1 Shelby Cobra 427 Assembly',
+      subtitle: 'Studio Team Build & Student Mentorship',
+      quote: 'Hands-on fabrication: students and master technicians bringing classic roadster proportions to life.',
+      credit: '2NOMADS Prototyping Workshop',
+      image: '/media/gallery/shelby-cobra-assembly-team.jpg',
+      category: '1:1 Prototype',
+    },
+    {
+      id: 's20',
+      title: 'Full-Scale Clay Sports Coupe',
+      subtitle: 'Three Modellers Hand-Surfacing',
+      quote: 'Precision sweeps carving shoulder lines across a full-size automotive clay coupe.',
+      credit: 'Automotive Styling Studio',
+      image: '/media/gallery/full-scale-clay-coupe-studio.jpg',
+      category: 'Clay Craft',
+    },
+    {
+      id: 's21',
+      title: 'Digital Design Studio & 3D Lab',
+      subtitle: 'CAD Surfacing & Prototyping Bay',
+      quote: 'The creative hub in Pune where computational styling meets physical model crafting.',
+      credit: '2NOMADS Studio HQ',
+      image: '/media/gallery/studio-13.jpg',
+      category: 'Studio Bay',
+    },
+    {
+      id: 's22',
+      title: 'Sports Coupe Marker Concept Sketch',
+      subtitle: 'Initial Form Ideation',
+      quote: 'Fast marker strokes capturing velocity, aerodynamic tension, and balanced stance.',
+      credit: 'R. Donshong Koren',
+      image: '/media/gallery/td-paper-sketch.jpg',
+      category: 'Design Sketch',
+    },
+    {
+      id: 's23',
+      title: 'Clay Scooter Buck Sculpting',
+      subtitle: 'Front Fascia Volume Refinement',
+      quote: 'Sculpting clean surface transitions with custom scrapers in front of the studio banner.',
+      credit: 'Clay Modeller Team',
+      image: '/media/gallery/clay-scooter-craft-studio.jpg',
+      category: 'Clay Craft',
+    },
+    {
+      id: 's24',
+      title: 'Motorcycle Tank Clay Development',
+      subtitle: 'Knee Recess Ergonomics',
+      quote: 'Shaping tank volume for rider connection and muscular front stance.',
+      credit: 'Prototype Fabrication',
+      image: '/media/gallery/work-10.jpg',
+      category: 'Ergonomics',
+    },
+    {
+      id: 's25',
+      title: 'Studio Fabrication & Tooling Shop',
+      subtitle: 'Heavy Machinery & Metal Bench',
+      quote: 'From steel armature framing to composite layups, our workshop builds working show hardware.',
+      credit: 'Workshop Engineers',
+      image: '/media/gallery/studio-10.jpg',
+      category: 'Workshop',
+    },
+    {
+      id: 's26',
+      title: 'Concept Vehicle Body Shell',
+      subtitle: 'Lightweight Monocoque Craft',
+      quote: 'Structural mockup testing vehicle packaging, ingress ergonomics, and surface lines.',
+      credit: 'Prototyping Bay',
+      image: '/media/gallery/work-21.jpg',
+      category: 'Mockup Build',
+    },
+    {
+      id: 's27',
+      title: 'Dual-Screen Digital Sculpting',
+      subtitle: 'Class-A Surface Alignment',
+      quote: 'Seamless handover between NURBS digital surfacing and physical coordinate milling.',
+      credit: 'Digital Modellers',
+      image: '/media/gallery/studio-16.jpg',
+      category: 'Digital Lab',
+    },
+    {
+      id: 's28',
+      title: 'Scale Convertible Concept Model',
+      subtitle: 'Aero Form Proportion Study',
+      quote: 'Windshield frame contrast and sculpted rear haunches in high-density styling clay.',
+      credit: 'Academy Studio',
+      image: '/media/gallery/work-22.jpg',
+      category: 'Scale Model',
+    },
+    {
+      id: 's29',
+      title: 'Industrial Clay Heating Oven',
+      subtitle: 'Material Conditioning Station',
+      quote: 'Strict temperature control keeping styling clay at optimal working plasticity for shaping.',
+      credit: 'Clay Lab',
+      image: '/media/gallery/studio-19.jpg',
+      category: 'Tooling',
+    },
+    {
+      id: 's30',
+      title: '3D Additive Print Farm',
+      subtitle: 'Rapid Prototype Verification',
+      quote: 'Overnight SLA and FDM prototyping turning digital concepts into tangible test components.',
+      credit: 'Additive Lab',
+      image: '/media/gallery/studio-20.jpg',
+      category: 'Additive Lab',
     },
   ];
 
