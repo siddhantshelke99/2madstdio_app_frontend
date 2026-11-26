@@ -877,7 +877,7 @@ header#hdr a.logo {
   flex: 0 0 clamp(320px, 42vw, 540px);
   scroll-snap-align: start;
   aspect-ratio: 16 / 10;
-  border-radius: 20px;
+  border-radius: 8px !important;
   overflow: hidden;
   position: relative;
   background: #141519;
@@ -1191,7 +1191,7 @@ header#hdr a.logo {
   .g-reel-card {
     flex: 0 0 84vw;
     aspect-ratio: 16 / 11;
-    border-radius: 16px;
+    border-radius: 8px !important;
   }
 
   .g-reel-card-overlay {

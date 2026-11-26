@@ -2039,7 +2039,7 @@ footer{font-family:var(--body);letter-spacing:.04em}
 
 .gallery-grid{gap:16px;margin-top:30px}
 .gallery-card{
-  border-radius:var(--r-lg);
+  border-radius:8px !important;
   border:1px solid var(--hair-dark);
   background:#141519;
   box-shadow:0 20px 44px rgba(0,0,0,.24);
@@ -2081,7 +2081,7 @@ footer{font-family:var(--body);letter-spacing:.04em}
 .gl-close:hover{background:#fff;color:#111214;border-color:#fff;transform:rotate(90deg)}
 .gl-nav{width:52px;height:52px;background:rgba(24,25,30,.7);border:1px solid var(--hair-dark);backdrop-filter:blur(18px)}
 .gl-nav:hover{background:var(--accent);border-color:var(--accent);box-shadow:0 12px 30px rgba(232,86,42,.34);transform:translateY(-50%) scale(1.06)}
-.gl-stage img{border-radius:20px;box-shadow:0 40px 90px rgba(0,0,0,.75)}
+.gl-stage img{border-radius:8px;box-shadow:0 40px 90px rgba(0,0,0,.75)}
 .gl-title{font:600 clamp(16px,1.3vw,21px)/1.25 var(--display);letter-spacing:-.025em;color:#f7f7f8}
 .gl-desc{font:400 13px/1.55 var(--body);color:var(--silver)}
 .gl-hints{font:500 10px/1 var(--body);letter-spacing:.16em;color:rgba(255,255,255,.42)}
@@ -2162,7 +2162,7 @@ section.in .contact-grid>div:nth-child(6){transition-delay:.3s}
   .btn{font-size:15px;padding:23px 40px}
   .e-card{padding:46px 40px!important;border-radius:32px!important}
   .g-filter-btn{font-size:15px;padding:14px 28px;min-height:52px}
-  .gallery-card{border-radius:32px}
+  .gallery-card{border-radius:8px !important}
   .gallery-grid{gap:24px}
 }
 @media (min-width:3840px){
@@ -2175,7 +2175,7 @@ section.in .contact-grid>div:nth-child(6){transition-delay:.3s}
   .contact-grid>div{padding:48px 44px!important}
   .btn{font-size:20px;padding:29px 50px}
   .g-filter-btn{font-size:20px;padding:18px 34px}
-  .gallery-card{border-radius:40px}
+  .gallery-card{border-radius:8px !important}
 }
 
 @media (max-width:960px){
@@ -2183,7 +2183,7 @@ section.in .contact-grid>div:nth-child(6){transition-delay:.3s}
   header.solid{padding:12px 6vw}
   nav.top{display:none}
   .cards a{min-height:0;gap:34px}
-  .gallery-card{border-radius:20px}
+  .gallery-card{border-radius:8px !important}
 }
 @media (max-width:600px){
   .kicker{font-size:10.5px;letter-spacing:.22em;margin-bottom:18px}
