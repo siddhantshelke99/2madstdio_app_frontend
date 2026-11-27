@@ -36,8 +36,17 @@ import { RouterModule, Router } from '@angular/router';
             Studio <i class="caret"></i>
           </button>
           <div class="drop">
-            <a (click)="scrollTo('#clay-service')" style="cursor: pointer;">Clay Service</a>
-            <a (click)="scrollTo('#prototype-service')" style="cursor: pointer;">Prototype Service</a>
+            <a routerLink="/studio" (click)="openDropdown.set(null)" class="drop-cta" style="margin-bottom: 6px; font-weight: 700;">
+              Studio &amp; Services Overview →
+            </a>
+            <a (click)="scrollTo('#clay-service')" style="cursor: pointer;">Clay Service (Home)</a>
+            <a (click)="scrollTo('#prototype-service')" style="cursor: pointer;">Prototype Service (Home)</a>
+            <a routerLink="/studio" [fragment]="'equipment'" (click)="openDropdown.set(null)" style="color: var(--accent); font-weight: 600; border-top: 1px solid rgba(0,0,0,0.08); margin-top: 4px; padding-top: 6px;">
+              Studio Equipments Directory →
+            </a>
+            <a routerLink="/studio" [fragment]="'inquiry'" (click)="openDropdown.set(null)" style="color: var(--accent); font-weight: 600;">
+              Client &amp; OEM Inquiry Form →
+            </a>
           </div>
         </div>
         <i class="sep"></i>
@@ -105,8 +114,11 @@ import { RouterModule, Router } from '@angular/router';
 
         <button type="button" (click)="toggleSubMenu('m-studio')">Studio {{ subMenuOpen() === 'm-studio' ? '−' : '+' }}</button>
         <div class="sub" [class.on]="subMenuOpen() === 'm-studio'">
-          <a (click)="menuNavigate('#clay-service')">Clay Service</a><br>
-          <a (click)="menuNavigate('#prototype-service')">Prototype Service</a>
+          <a routerLink="/studio" (click)="closeMenu()" style="color: var(--accent); font-weight: 700;">Studio &amp; Services Page →</a><br>
+          <a routerLink="/studio" [fragment]="'equipment'" (click)="closeMenu()">Studio Equipments Directory</a><br>
+          <a routerLink="/studio" [fragment]="'inquiry'" (click)="closeMenu()">Client &amp; OEM Inquiry Form</a><br>
+          <a (click)="menuNavigate('#clay-service')">Clay Service (Home)</a><br>
+          <a (click)="menuNavigate('#prototype-service')">Prototype Service (Home)</a>
         </div>
 
         <a routerLink="/gallery" (click)="isMenuOpen.set(false)">Gallery</a>
@@ -334,6 +346,10 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   toggleMenu(): void {
     this.isMenuOpen.update((v) => !v);
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen.set(false);
   }
 
   toggleSubMenu(id: string): void {

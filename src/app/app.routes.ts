@@ -8,8 +8,12 @@ export const routes: Routes = [
   },
   {
     path: 'studio',
-    loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
-    title: 'Studio Services — 2NOMADS Design Studio',
+    loadComponent: () => import('./pages/studio/studio.component').then((m) => m.StudioPageComponent),
+    title: 'Studio & Services — 2NOMADS Automotive Design Studio',
+  },
+  {
+    path: 'services',
+    redirectTo: 'studio',
   },
   {
     path: 'academy',
